@@ -1,9 +1,16 @@
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart, Shield, Users } from "lucide-react";
+import { useMagnetic } from "@/hooks/use-magnetic";
+import { useCounterAnimation } from "@/hooks/use-counter-animation";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const magneticRef1 = useMagnetic(0.15);
+  const magneticRef2 = useMagnetic(0.15);
+  const { count: percentage, ref: percentRef } = useCounterAnimation(100, 2000);
+  const { count: ageStart, ref: ageRef } = useCounterAnimation(11, 1500);
+  const { count: ageEnd, ref: ageEndRef } = useCounterAnimation(18, 1500, 11);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +69,7 @@ const HeroSection = () => {
               style={{ animationDelay: "0.2s" }}>
             Every Child Deserves
             <br />
-            <span className="text-gradient">A Brighter Future</span>
+            <span className="text-gradient animate-gradient-shift">A Brighter Future</span>
           </h1>
 
           {/* Subheadline */}
@@ -76,16 +83,18 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 animate-fade-in-up"
                style={{ animationDelay: "0.6s" }}>
             <Button
+              ref={magneticRef1 as any}
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-2xl shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-glow)] transform hover:scale-105 transition-all duration-300 group"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-2xl shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-glow)] transition-all duration-300 group"
             >
               Explore Our Services
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
+              ref={magneticRef2 as any}
               size="lg"
               variant="outline"
-              className="bg-white/80 backdrop-blur-sm hover:bg-white border-2 border-primary/20 text-foreground px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="bg-white/80 backdrop-blur-sm hover:bg-white border-2 border-primary/20 text-foreground px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Learn About Our Approach
             </Button>
@@ -94,20 +103,31 @@ const HeroSection = () => {
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fade-in-up"
                style={{ animationDelay: "0.8s" }}>
-            {[
-              { icon: Heart, label: "Trauma-Informed", value: "100%", color: "primary" },
-              { icon: Shield, label: "Qualified Staff", value: "Expert", color: "secondary" },
-              { icon: Users, label: "Young People", value: "11-18", color: "accent" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="glass-effect rounded-3xl p-8 border border-white/30 hover:border-white/60 transition-all duration-500 transform hover:scale-105 hover:shadow-xl group"
-              >
-                <stat.icon className={`w-12 h-12 mx-auto mb-4 text-${stat.color} group-hover:scale-110 transition-transform`} />
-                <div className="text-3xl font-display font-bold mb-2">{stat.value}</div>
-                <div className="text-sm text-foreground/70 font-medium">{stat.label}</div>
-              </div>
-            ))}
+            <div
+              ref={percentRef}
+              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-primary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group"
+            >
+              <Heart className="w-12 h-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" fill="currentColor" />
+              <div className="text-3xl font-display font-bold mb-2">{percentage}%</div>
+              <div className="text-sm text-foreground/70 font-medium">Trauma-Informed</div>
+            </div>
+            
+            <div
+              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-secondary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group"
+            >
+              <Shield className="w-12 h-12 mx-auto mb-4 text-secondary group-hover:scale-110 transition-transform" fill="currentColor" />
+              <div className="text-3xl font-display font-bold mb-2">Expert</div>
+              <div className="text-sm text-foreground/70 font-medium">Qualified Staff</div>
+            </div>
+            
+            <div
+              ref={ageRef}
+              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-accent/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group"
+            >
+              <Users className="w-12 h-12 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" fill="currentColor" />
+              <div className="text-3xl font-display font-bold mb-2">{ageStart}-{ageEnd}</div>
+              <div className="text-sm text-foreground/70 font-medium">Young People</div>
+            </div>
           </div>
         </div>
       </div>

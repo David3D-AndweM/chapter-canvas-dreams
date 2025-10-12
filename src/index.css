@@ -96,6 +96,13 @@ All colors MUST be HSL.
     -webkit-backdrop-filter: var(--blur-glass);
   }
   
+  .glass-effect-enhanced {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -117,6 +124,11 @@ All colors MUST be HSL.
   .animate-slide-in-right {
     animation: slideInRight 0.8s ease-out forwards;
     opacity: 0;
+  }
+  
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
   }
 }
 
@@ -155,5 +167,14 @@ All colors MUST be HSL.
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }

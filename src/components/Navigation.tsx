@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useMagnetic } from "@/hooks/use-magnetic";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+  const magneticRef = useMagnetic(0.2);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,13 +34,20 @@ const Navigation = () => {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "glass-effect border-b border-white/20 shadow-lg py-4"
-          : "bg-primary py-6"
-      }`}
-    >
+    <>
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent origin-left z-[60]"
+        style={{ scaleX }}
+      />
+      
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "glass-effect border-b border-white/20 shadow-lg py-4"
+            : "bg-primary py-6"
+        }`}
+      >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -60,7 +76,8 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button
-              className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              ref={magneticRef as any}
+              className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Get in Touch
             </Button>
@@ -95,6 +112,7 @@ const Navigation = () => {
         )}
       </div>
     </nav>
+    </>
   );
 };
 

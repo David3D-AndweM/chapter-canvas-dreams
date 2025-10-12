@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useMagnetic } from "@/hooks/use-magnetic";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const magneticRef1 = useMagnetic(0.2);
+  const magneticRef2 = useMagnetic(0.2);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -140,14 +143,16 @@ const ContactSection = () => {
 
                 <div className="space-y-4">
                   <Button
+                    ref={magneticRef1 as any}
                     size="lg"
-                    className="w-full bg-white text-primary hover:bg-white/90 font-semibold py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+                    className="w-full bg-white text-primary hover:bg-white/90 font-semibold py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                   >
                     Request a Consultation
                     <Send className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                   
                   <Button
+                    ref={magneticRef2 as any}
                     size="lg"
                     variant="outline"
                     className="w-full bg-white/10 border-2 border-white text-white hover:bg-white/20 font-semibold py-6 text-lg rounded-2xl backdrop-blur-sm"
