@@ -17,6 +17,17 @@ const MagneticRevealImage = ({ src, alt, className = '' }: MagneticRevealImagePr
   const maskX = useSpring(mouseX, { stiffness: 500, damping: 30 });
   const maskY = useSpring(mouseY, { stiffness: 500, damping: 30 });
 
+  // Create transforms unconditionally (Rules of Hooks)
+  const clipPathTransform = useTransform(
+    [maskX, maskY],
+    ([x, y]) => `circle(150px at ${x}px ${y}px)`
+  );
+
+  const backgroundTransform = useTransform(
+    [maskX, maskY],
+    ([x, y]) => `radial-gradient(circle 200px at ${x}px ${y}px, hsla(var(--primary) / 0.3), transparent)`
+  );
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
@@ -45,12 +56,7 @@ const MagneticRevealImage = ({ src, alt, className = '' }: MagneticRevealImagePr
       <motion.div
         className="absolute inset-0"
         style={{
-          clipPath: isHovered
-            ? useTransform(
-                [maskX, maskY],
-                ([x, y]) => `circle(150px at ${x}px ${y}px)`
-              )
-            : 'circle(0px at 50% 50%)',
+          clipPath: isHovered ? clipPathTransform : 'circle(0px at 50% 50%)',
         }}
       >
         <img
@@ -64,11 +70,7 @@ const MagneticRevealImage = ({ src, alt, className = '' }: MagneticRevealImagePr
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: useTransform(
-            [maskX, maskY],
-            ([x, y]) =>
-              `radial-gradient(circle 200px at ${x}px ${y}px, hsla(var(--primary) / 0.3), transparent)`
-          ),
+          background: backgroundTransform,
           opacity: isHovered ? 1 : 0,
         }}
         transition={{ duration: 0.3 }}
