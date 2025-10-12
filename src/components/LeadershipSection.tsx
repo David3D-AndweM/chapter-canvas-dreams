@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { GraduationCap, Award, Briefcase, Users, Heart, Target } from "lucide-react";
 import InteractiveTimeline from "./InteractiveTimeline";
 import SectionTransition from "./SectionTransition";
-import { GraduationCap, Award, Briefcase, Users, Heart, Target } from "lucide-react";
 import LiquidDistortImage from "./LiquidDistortImage";
 import approachStrategyImg from "@/assets/approach-strategy.jpg";
-import { motion } from "framer-motion";
 
 const leaders = [
   {
@@ -70,34 +68,10 @@ const leaders = [
 ];
 
 const LeadershipSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="leadership"
-      ref={sectionRef}
-      className="py-32 relative overflow-hidden"
-      style={{ background: "var(--gradient-hero)" }}
+      className="py-32 relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -108,47 +82,27 @@ const LeadershipSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div 
-            className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-          >
+          <div className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
             <span className="text-primary font-semibold text-sm">Leadership</span>
-          </motion.div>
+          </div>
           
-          <motion.h2 
-            className="text-5xl md:text-6xl font-display font-bold mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.34, 1.56, 0.64, 1] }}
-          >
+          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6">
             Led by <span className="text-gradient">Experience</span>
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Leadership Cards */}
         <div className="space-y-8 mb-20">
           {leaders.map((leader, index) => (
-            <motion.div
-              key={leader.name}
-              className="max-w-5xl mx-auto"
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.8, delay: index * 0.2, ease: [0.34, 1.56, 0.64, 1] }}
-            >
-              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-[var(--shadow-glow)] transition-all duration-500">
+            <div key={leader.name} className="max-w-5xl mx-auto">
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-[var(--shadow-glow)] transition-all duration-500 hover:scale-[1.02]">
                 <div className="grid md:grid-cols-5 gap-0">
                   {/* Image Side */}
                   <div className="md:col-span-2 bg-gradient-to-br from-primary/10 to-secondary/10 p-12 flex items-center justify-center">
                     <div className="text-center">
-                      <motion.div 
-                        className="w-48 h-48 bg-white rounded-full shadow-xl flex items-center justify-center mx-auto mb-6"
-                        whileHover={{ scale: 1.05, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
+                      <div className="w-48 h-48 bg-white rounded-full shadow-xl flex items-center justify-center mx-auto mb-6 hover:scale-105 hover:rotate-3 transition-all duration-300">
                         <span className="text-6xl font-display font-bold text-primary">{leader.initials}</span>
-                      </motion.div>
+                      </div>
                       <h3 className="text-2xl font-display font-bold text-foreground mb-2">{leader.name}</h3>
                       <p className="text-primary font-semibold">{leader.title}</p>
                     </div>
@@ -169,11 +123,9 @@ const LeadershipSection = () => {
                     {/* Qualifications */}
                     <div className="space-y-4">
                       {leader.qualifications.map((qual, i) => (
-                        <motion.div 
+                        <div 
                           key={i}
-                          className="flex items-start space-x-4 group"
-                          whileHover={{ x: 10 }}
-                          transition={{ duration: 0.3 }}
+                          className="flex items-start space-x-4 group hover:translate-x-2 transition-transform duration-300"
                         >
                           <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
                             <qual.icon className="w-6 h-6 text-primary" />
@@ -182,13 +134,13 @@ const LeadershipSection = () => {
                             <h4 className="font-semibold text-foreground mb-1">{qual.title}</h4>
                             <p className="text-sm text-foreground/70">{qual.subtitle}</p>
                           </div>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
         
