@@ -122,11 +122,10 @@ const LeadershipSection = () => {
           {leaders.map((leader, index) => (
             <motion.div
               key={leader.name}
-              className={`max-w-5xl mx-auto ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-              style={{ animationDelay: `${0.2 + index * 0.1}s` }}
+              className="max-w-5xl mx-auto"
               initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.8, delay: index * 0.2, ease: [0.34, 1.56, 0.64, 1] }}
             >
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-[var(--shadow-glow)] transition-all duration-500">
                 <div className="grid md:grid-cols-5 gap-0">
