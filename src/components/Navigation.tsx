@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useMagnetic } from "@/hooks/use-magnetic";
+import { Glow, Magnetic } from "./MicroInteractions";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,35 +53,47 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#hero" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-              <span className="text-2xl font-display font-bold text-white">D</span>
-            </div>
-            <span className="text-2xl font-display font-bold text-white">
+            <Glow>
+              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                <span className="text-2xl font-display font-bold text-white">D</span>
+              </div>
+            </Glow>
+            <motion.span 
+              className="text-2xl font-display font-bold text-white"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               Dream Path
-            </span>
+            </motion.span>
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <a
+            {navItems.map((item, index) => (
+              <motion.a
                 key={item.label}
                 href={item.href}
                 className="px-5 py-2 text-white/90 hover:text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -2 }}
               >
                 {item.label}
-              </a>
+              </motion.a>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button
-              ref={magneticRef as any}
-              className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Get in Touch
-            </Button>
+            <Magnetic>
+              <Button
+                ref={magneticRef as any}
+                className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Get in Touch
+              </Button>
+            </Magnetic>
           </div>
 
           {/* Mobile Menu Toggle */}

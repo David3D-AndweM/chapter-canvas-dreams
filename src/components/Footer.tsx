@@ -1,4 +1,6 @@
 import { Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { Bounce } from "./MicroInteractions";
 
 const Footer = () => {
   return (
@@ -8,20 +10,47 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center">
-                <span className="text-2xl font-display font-bold text-white">D</span>
-              </div>
-              <span className="text-2xl font-display font-bold">Dream Path</span>
+              <Bounce>
+                <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center">
+                  <span className="text-2xl font-display font-bold text-white">D</span>
+                </div>
+              </Bounce>
+              <motion.span 
+                className="text-2xl font-display font-bold"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Dream Path
+              </motion.span>
             </div>
-            <p className="text-white/70 leading-relaxed mb-4">
+            <motion.p 
+              className="text-white/70 leading-relaxed mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Specialist therapeutic residential care for children and young people 
               across England and Wales.
-            </p>
-            <div className="flex items-center space-x-2 text-white/80">
+            </motion.p>
+            <motion.div 
+              className="flex items-center space-x-2 text-white/80"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <span>Made with</span>
-              <Heart className="w-4 h-4 text-primary fill-current" />
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <Heart className="w-4 h-4 text-primary fill-current" />
+              </motion.div>
               <span>for every child</span>
-            </div>
+            </motion.div>
           </div>
 
           {/* Quick Links */}

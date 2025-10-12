@@ -1,14 +1,18 @@
+import { lazy, Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import BentoServicesSection from "@/components/BentoServicesSection";
-import ValuesSection from "@/components/ValuesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import VideoSection from "@/components/VideoSection";
-import LeadershipSection from "@/components/LeadershipSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import SkeletonLoader from "@/components/SkeletonLoader";
 import ParticleSystem from "@/components/ParticleSystem";
+
+// Lazy load heavy components for better performance
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const BentoServicesSection = lazy(() => import("@/components/BentoServicesSection"));
+const ValuesSection = lazy(() => import("@/components/ValuesSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const VideoSection = lazy(() => import("@/components/VideoSection"));
+const LeadershipSection = lazy(() => import("@/components/LeadershipSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   return (
@@ -17,15 +21,39 @@ const Index = () => {
       <Navigation />
       <main>
         <HeroSection />
-        <AboutSection />
-        <BentoServicesSection />
-        <ValuesSection />
-        <TestimonialsSection />
-        <VideoSection />
-        <LeadershipSection />
-        <ContactSection />
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <AboutSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <BentoServicesSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <ValuesSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <TestimonialsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <VideoSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <LeadershipSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <ContactSection />
+        </Suspense>
       </main>
-      <Footer />
+      
+      <Suspense fallback={<SkeletonLoader className="min-h-[400px]" />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
