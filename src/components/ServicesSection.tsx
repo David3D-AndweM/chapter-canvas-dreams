@@ -5,12 +5,31 @@ import { motion } from "framer-motion";
 import RotatingCardGallery from "./RotatingCardGallery";
 import ScrollTransform3D from "./ScrollTransform3D";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ServiceDetailModal from "./ServiceDetailModal";
 
 const services = [
   {
     icon: Heart,
     title: "Therapeutic Care",
     description: "Trauma-informed therapeutic care approach with access to our bespoke 'Well Being for Life' clinical programme.",
+    fullDescription: "Our therapeutic care service provides a comprehensive, trauma-informed approach that prioritizes the emotional and psychological well-being of every young person. Through our bespoke 'Well Being for Life' clinical programme, we deliver evidence-based therapeutic interventions tailored to individual needs.\n\nWe understand that healing from trauma requires time, expertise, and a nurturing environment. Our team works collaboratively to create safe spaces where young people can process their experiences, develop healthy coping mechanisms, and build resilience for their future.",
+    features: [
+      "Individual therapy sessions with qualified therapists",
+      "Group therapy programmes fostering peer support",
+      "Access to 'Well Being for Life' clinical programme",
+      "Trauma-informed care approach throughout",
+      "Family involvement and systemic therapy",
+      "Crisis intervention and emotional regulation support"
+    ],
+    targetAudience: "Young people aged 11-18 who have experienced trauma, attachment difficulties, or emotional challenges requiring therapeutic intervention and a nurturing care environment.",
+    qualifications: "Our therapeutic team includes qualified therapists, counsellors, and psychologists with extensive experience in childhood trauma, attachment theory, and evidence-based therapeutic modalities.",
+    outcomes: [
+      "Improved emotional regulation and self-awareness",
+      "Development of healthy coping strategies",
+      "Enhanced ability to form secure attachments",
+      "Increased resilience and confidence",
+      "Better understanding and processing of past trauma"
+    ],
     color: "primary",
     delay: "0s",
   },
@@ -18,6 +37,24 @@ const services = [
     icon: Brain,
     title: "Mental Health Support",
     description: "Comprehensive mental health support from qualified psychologists and behaviour support professionals.",
+    fullDescription: "Mental health is at the heart of everything we do. Our comprehensive mental health support service brings together qualified psychologists, psychiatric consultants, and behaviour support professionals to provide holistic care for young people facing mental health challenges.\n\nWe offer both reactive and proactive mental health interventions, ensuring that every young person receives the support they need when they need it. From assessment and diagnosis to ongoing therapeutic support and medication management, our team works together to promote positive mental health outcomes.",
+    features: [
+      "Psychiatric assessments and consultations",
+      "Individual psychological therapy",
+      "Medication management and monitoring",
+      "Behaviour support planning and implementation",
+      "Crisis intervention and safety planning",
+      "Mental health awareness and psychoeducation"
+    ],
+    targetAudience: "Young people aged 11-18 experiencing mental health difficulties including anxiety, depression, emotional dysregulation, or complex psychological needs requiring specialist intervention.",
+    qualifications: "Our mental health team comprises clinical psychologists, consultant psychiatrists, mental health nurses, and trained behaviour support professionals, all with expertise in adolescent mental health.",
+    outcomes: [
+      "Improved mental health stability and wellbeing",
+      "Better understanding of mental health conditions",
+      "Effective symptom management strategies",
+      "Enhanced emotional literacy and expression",
+      "Reduced crisis incidents and improved safety"
+    ],
     color: "secondary",
     delay: "0.1s",
   },
@@ -25,6 +62,24 @@ const services = [
     icon: GraduationCap,
     title: "Educational Services",
     description: "DfE registered on-site school with tailored education packages for every young person.",
+    fullDescription: "Education is a fundamental right and a pathway to future opportunities. Our DfE registered on-site school provides high-quality education in a supportive, therapeutic environment. We understand that traditional educational settings may not have met the needs of the young people in our care, which is why we offer flexible, individualized learning approaches.\n\nOur education team works closely with therapeutic and care staff to ensure that learning is accessible, engaging, and tailored to each young person's abilities, interests, and aspirations. From functional skills to GCSEs and vocational qualifications, we support educational progression at every level.",
+    features: [
+      "DfE registered on-site school provision",
+      "Personalized education plans for each learner",
+      "Small class sizes and 1-to-1 support",
+      "GCSE, functional skills, and vocational qualifications",
+      "Therapeutic integration within education",
+      "Transition support to further education or employment"
+    ],
+    targetAudience: "Young people aged 11-18 who have experienced educational disruption, school exclusion, or require specialist educational provision alongside therapeutic support.",
+    qualifications: "Our teaching staff are qualified educators with experience in SEND education, trauma-informed teaching practices, and alternative provision. They work alongside educational psychologists and learning support specialists.",
+    outcomes: [
+      "Re-engagement with learning and education",
+      "Achievement of qualifications and certifications",
+      "Improved literacy and numeracy skills",
+      "Development of independent learning skills",
+      "Successful transition to further education or employment"
+    ],
     color: "accent",
     delay: "0.2s",
   },
@@ -32,6 +87,24 @@ const services = [
     icon: Shield,
     title: "Complex Needs Service",
     description: "Specialist support for young people with emotional and behavioural difficulties, offering stability and structure.",
+    fullDescription: "Our complex needs service is designed for young people who require intensive, specialist support due to emotional and behavioural difficulties. We provide a structured, consistent environment where young people can feel safe while receiving the therapeutic interventions they need.\n\nThrough high staff ratios, comprehensive behaviour support planning, and a trauma-informed approach, we help young people develop the skills and strategies needed to manage their emotions and behaviours effectively. Our goal is to provide the stability and support that enables positive change and growth.",
+    features: [
+      "High staff-to-young person ratios",
+      "Comprehensive behaviour support plans",
+      "Positive behaviour support approaches",
+      "Structured daily routines and activities",
+      "Sensory integration and regulation support",
+      "Collaborative working with external professionals"
+    ],
+    targetAudience: "Young people aged 11-18 with complex emotional and behavioural needs, including those with neurodevelopmental conditions, attachment difficulties, or histories of placement breakdown.",
+    qualifications: "Staff are trained in positive behaviour support, therapeutic crisis intervention, sensory integration, and trauma-informed care, working alongside psychologists and behaviour analysts.",
+    outcomes: [
+      "Reduction in challenging behaviours",
+      "Improved emotional and behavioural regulation",
+      "Enhanced social skills and peer relationships",
+      "Increased placement stability and reduced breakdown risk",
+      "Development of independence and life skills"
+    ],
     color: "primary",
     delay: "0.3s",
   },
@@ -39,6 +112,24 @@ const services = [
     icon: Users,
     title: "Sexual Trauma Recovery",
     description: "Safe, structured environments with our three-phase recovery programme for CSE and HSB services.",
+    fullDescription: "Supporting young people who have experienced child sexual exploitation (CSE) or who display harmful sexual behaviour (HSB) requires specialist knowledge, sensitivity, and therapeutic expertise. Our dedicated service provides safe, structured environments where young people can heal, recover, and develop healthy understandings of relationships and boundaries.\n\nThrough our evidence-based three-phase recovery programme, we address the complex trauma, shame, and confusion that often accompanies these experiences. Our approach combines individual therapy, group work, and psychoeducation to support recovery and prevent future harm.",
+    features: [
+      "Three-phase recovery programme (stabilization, processing, integration)",
+      "Specialist CSE and HSB trained therapists",
+      "Individual trauma-focused therapy",
+      "Group therapy and peer support",
+      "Healthy relationships and boundaries education",
+      "Safety planning and risk management"
+    ],
+    targetAudience: "Young people aged 11-18 who have experienced child sexual exploitation or who display harmful sexual behaviours, requiring specialist therapeutic intervention in a safe environment.",
+    qualifications: "Our team includes therapists specialized in sexual trauma, CSE, and HSB, trained in evidence-based therapeutic modalities including trauma-focused CBT and attachment-based interventions.",
+    outcomes: [
+      "Recovery from trauma and reduced PTSD symptoms",
+      "Development of healthy relationship understanding",
+      "Improved boundaries and consent awareness",
+      "Reduced risk of re-exploitation or harmful behaviours",
+      "Enhanced self-esteem and identity formation"
+    ],
     color: "secondary",
     delay: "0.4s",
   },
@@ -46,12 +137,30 @@ const services = [
     icon: Sparkles,
     title: "Forensic Services",
     description: "Alternative to secure placements with intensive therapeutic interventions and high staff ratios.",
+    fullDescription: "Our forensic service provides an alternative to secure accommodation for young people who have been involved in offending behaviour or are at risk of custody. Through intensive therapeutic interventions, high staff ratios, and robust risk management, we create an environment that balances safety with therapeutic progress.\n\nWe work closely with youth justice services, police, and social care to provide coordinated support that addresses the root causes of offending behaviour while promoting positive behaviour change. Our approach recognizes that many young people who offend have themselves experienced trauma, adversity, and unmet needs.",
+    features: [
+      "Alternative to secure accommodation",
+      "High staff ratios and 24/7 supervision",
+      "Offending behaviour programmes",
+      "Restorative justice approaches",
+      "Intensive therapeutic interventions",
+      "Multi-agency risk management"
+    ],
+    targetAudience: "Young people aged 11-18 involved in offending behaviour, at risk of custody, or requiring step-down from secure accommodation, who can benefit from intensive community-based support.",
+    qualifications: "Staff are trained in youth justice, risk assessment and management, trauma-informed practice, and offending behaviour interventions, working alongside forensic psychologists and youth justice professionals.",
+    outcomes: [
+      "Reduction in offending and risky behaviours",
+      "Improved understanding of consequences and victim impact",
+      "Development of pro-social skills and values",
+      "Successful diversion from custody or secure care",
+      "Enhanced community integration and positive activities"
+    ],
     color: "accent",
     delay: "0.5s",
   },
 ];
 
-const ServiceCard = ({ service, index, isVisible, spiralDelay }: any) => {
+const ServiceCard = ({ service, index, isVisible, spiralDelay, onClick }: any) => {
   const tiltRef = useTilt(8);
   
   return (
@@ -67,11 +176,12 @@ const ServiceCard = ({ service, index, isVisible, spiralDelay }: any) => {
           ease: [0.34, 1.56, 0.64, 1]
         }
       } : {}}
-      className="group"
+      className="group cursor-pointer"
+      onClick={onClick}
     >
       <div 
         ref={tiltRef}
-        className="h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-[var(--shadow-glow)] transition-all duration-500 border border-transparent hover:border-primary/30"
+        className="h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-[var(--shadow-glow)] transition-all duration-500 border border-transparent hover:border-primary/30 hover:scale-[1.02]"
         style={{ 
           transformStyle: 'preserve-3d',
           transition: 'transform 0.3s ease-out'
@@ -94,11 +204,19 @@ const ServiceCard = ({ service, index, isVisible, spiralDelay }: any) => {
         </h3>
         
         <p 
-          className="text-foreground/70 leading-relaxed"
+          className="text-foreground/70 leading-relaxed mb-4"
           style={{ transform: 'translateZ(10px)' }}
         >
           {service.description}
         </p>
+
+        {/* Learn More Indicator */}
+        <div className="flex items-center gap-2 text-primary font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span>Learn More</span>
+          <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
 
         {/* Hover Effect Bar */}
         <div className="mt-6 h-1 w-0 bg-gradient-to-r from-primary to-secondary rounded-full group-hover:w-full transition-all duration-500" />
@@ -110,7 +228,14 @@ const ServiceCard = ({ service, index, isVisible, spiralDelay }: any) => {
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
   const isMobile = useIsMobile();
+
+  const handleServiceClick = (service: typeof services[0]) => {
+    setSelectedService(service);
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -193,6 +318,7 @@ const ServicesSection = () => {
                   index={index}
                   isVisible={isVisible}
                   spiralDelay={spiralDelay}
+                  onClick={() => handleServiceClick(service)}
                 />
               );
             }
@@ -210,6 +336,7 @@ const ServicesSection = () => {
                   index={index}
                   isVisible={isVisible}
                   spiralDelay={spiralDelay}
+                  onClick={() => handleServiceClick(service)}
                 />
               </ScrollTransform3D>
             );
@@ -227,6 +354,13 @@ const ServicesSection = () => {
           </button>
         </div>
       </div>
+
+      {/* Service Detail Modal */}
+      <ServiceDetailModal
+        service={selectedService}
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+      />
     </section>
   );
 };
