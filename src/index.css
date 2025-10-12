@@ -53,6 +53,23 @@ All colors MUST be HSL.
     --blur-glass: blur(20px);
     --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Performance optimizations */
+    --gpu-acceleration: translateZ(0);
+  }
+  
+  /* Reduced motion support for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --transition-smooth: none;
+      --transition-spring: none;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -67,6 +84,14 @@ All colors MUST be HSL.
     overflow-x: hidden;
   }
   
+  /* Enable font variation settings for variable fonts */
+  * {
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -74,6 +99,11 @@ All colors MUST be HSL.
   
   html {
     scroll-behavior: smooth;
+  }
+  
+  /* Performance optimizations */
+  img, video {
+    content-visibility: auto;
   }
 }
 
@@ -88,6 +118,11 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: background-position 0.3s ease;
+  }
+  
+  .text-gradient:hover {
+    background-position: 100% 50%;
   }
   
   .glass-effect {
@@ -105,10 +140,12 @@ All colors MUST be HSL.
   
   .animate-float {
     animation: float 6s ease-in-out infinite;
+    will-change: transform;
   }
   
   .animate-float-delayed {
     animation: float 6s ease-in-out infinite 2s;
+    will-change: transform;
   }
   
   .animate-fade-in-up {
@@ -129,6 +166,29 @@ All colors MUST be HSL.
   .animate-gradient-shift {
     background-size: 200% 200%;
     animation: gradientShift 4s ease infinite;
+  }
+  
+  /* Variable font weight animation */
+  .font-weight-hover {
+    font-variation-settings: 'wght' 400;
+    transition: font-variation-settings 0.3s ease;
+  }
+  
+  .font-weight-hover:hover {
+    font-variation-settings: 'wght' 700;
+  }
+  
+  /* GPU acceleration for better performance */
+  .gpu-accelerated {
+    transform: var(--gpu-acceleration);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Smooth scroll performance */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 }
 

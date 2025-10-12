@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useMagnetic } from "@/hooks/use-magnetic";
+import HapticButton from "./HapticButton";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -142,23 +143,25 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <Button
+                  <HapticButton
                     ref={magneticRef1 as any}
                     size="lg"
+                    hapticStrength="medium"
                     className="w-full bg-white text-primary hover:bg-white/90 font-semibold py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                   >
                     Request a Consultation
                     <Send className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  </HapticButton>
                   
-                  <Button
+                  <HapticButton
                     ref={magneticRef2 as any}
                     size="lg"
                     variant="outline"
+                    hapticStrength="light"
                     className="w-full bg-white/10 border-2 border-white text-white hover:bg-white/20 font-semibold py-6 text-lg rounded-2xl backdrop-blur-sm"
                   >
                     Download Our Brochure
-                  </Button>
+                  </HapticButton>
                 </div>
               </div>
             </div>

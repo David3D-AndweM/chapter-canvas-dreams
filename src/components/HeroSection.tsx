@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart, Shield, Users } from "lucide-react";
 import { useMagnetic } from "@/hooks/use-magnetic";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import HapticButton from "./HapticButton";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -101,7 +102,7 @@ const HeroSection = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-tight animate-fade-in-up"
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-tight animate-fade-in-up font-weight-hover"
               style={{ animationDelay: "0.2s" }}>
             Every Child Deserves
             <br />
@@ -118,22 +119,24 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 animate-fade-in-up"
                style={{ animationDelay: "0.6s" }}>
-            <Button
+            <HapticButton
               ref={magneticRef1 as any}
               size="lg"
+              hapticStrength="medium"
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-2xl shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-glow)] transition-all duration-300 group"
             >
               Explore Our Services
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
+            </HapticButton>
+            <HapticButton
               ref={magneticRef2 as any}
               size="lg"
               variant="outline"
+              hapticStrength="light"
               className="bg-white/80 backdrop-blur-sm hover:bg-white border-2 border-primary/20 text-foreground px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Learn About Our Approach
-            </Button>
+            </HapticButton>
           </div>
 
           {/* Stats Cards */}
@@ -141,27 +144,27 @@ const HeroSection = () => {
                style={{ animationDelay: "0.8s" }}>
             <div
               ref={percentRef}
-              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-primary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group"
+              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-primary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"
             >
               <Heart className="w-12 h-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" fill="currentColor" />
-              <div className="text-3xl font-display font-bold mb-2">{percentage}%</div>
+              <div className="text-3xl font-display font-bold mb-2 font-weight-hover">{percentage}%</div>
               <div className="text-sm text-foreground/70 font-medium">Trauma-Informed</div>
             </div>
             
             <div
-              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-secondary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group"
+              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-secondary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"
             >
               <Shield className="w-12 h-12 mx-auto mb-4 text-secondary group-hover:scale-110 transition-transform" fill="currentColor" />
-              <div className="text-3xl font-display font-bold mb-2">Expert</div>
+              <div className="text-3xl font-display font-bold mb-2 font-weight-hover">Expert</div>
               <div className="text-sm text-foreground/70 font-medium">Qualified Staff</div>
             </div>
             
             <div
               ref={ageRef}
-              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-accent/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group"
+              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-accent/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"
             >
               <Users className="w-12 h-12 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" fill="currentColor" />
-              <div className="text-3xl font-display font-bold mb-2">{ageStart}-{ageEnd}</div>
+              <div className="text-3xl font-display font-bold mb-2 font-weight-hover">{ageStart}-{ageEnd}</div>
               <div className="text-sm text-foreground/70 font-medium">Young People</div>
             </div>
           </div>
