@@ -178,3 +178,13 @@ All colors MUST be HSL.
     background-position: 100% 50%;
   }
 }
+
+/* Hide scrollbar for horizontal scroll sections */
+.overflow-x-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-x-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

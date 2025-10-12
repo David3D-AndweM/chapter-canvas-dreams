@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import AnimatedSVG from "@/components/AnimatedSVG";
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -68,6 +69,11 @@ const AboutSection = () => {
           {/* Image/Visual Side */}
           <div className={`${isVisible ? "animate-slide-in-right" : "opacity-0"} relative`}>
             <div className="relative">
+              {/* Animated SVG */}
+              <div className="mb-8">
+                <AnimatedSVG />
+              </div>
+              
               {/* Decorative Elements */}
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-secondary/30 rounded-3xl animate-float" />
               <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-primary/20 rounded-3xl animate-float-delayed" />

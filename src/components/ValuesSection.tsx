@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Award, Briefcase, Heart, Lightbulb, Target } from "lucide-react";
+import { useTilt } from "@/hooks/use-tilt";
+import { motion } from "framer-motion";
 
 const values = [
   {
@@ -28,6 +30,67 @@ const values = [
     description: "We never give up. Our teams go the extra mile to provide adaptable, effective support.",
   },
 ];
+
+const ValueCard = ({ value, index, isVisible }: any) => {
+  const tiltRef = useTilt(10);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50, rotateX: -20 }}
+      animate={isVisible ? {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        transition: {
+          duration: 0.7,
+          delay: index * 0.15,
+          ease: [0.34, 1.56, 0.64, 1]
+        }
+      } : {}}
+    >
+      <div className="group relative h-full">
+        {/* Card */}
+        <div 
+          ref={tiltRef}
+          className="relative h-full bg-gradient-to-br from-white to-primary/5 rounded-3xl p-8 border border-primary/10 hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-[var(--shadow-glow)]"
+          style={{ 
+            transformStyle: 'preserve-3d',
+            transition: 'transform 0.3s ease-out'
+          }}
+        >
+          {/* Glow Effect on Hover */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all duration-500" />
+          
+          <div className="relative z-10">
+            {/* Icon */}
+            <div 
+              className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300"
+              style={{ transform: 'translateZ(30px)' }}
+            >
+              <value.icon className="w-8 h-8 text-primary" />
+            </div>
+
+            {/* Title */}
+            <h3 
+              className="text-2xl font-display font-bold mb-4 text-foreground group-hover:text-primary transition-colors"
+              style={{ transform: 'translateZ(20px)' }}
+            >
+              {value.title}
+            </h3>
+
+            {/* Description */}
+            <p 
+              className="text-foreground/70 leading-relaxed"
+              style={{ transform: 'translateZ(10px)' }}
+            >
+              {value.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const ValuesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -78,40 +141,11 @@ const ValuesSection = () => {
           </p>
         </div>
 
-        {/* Values Grid */}
+        {/* Values Grid with 3D Tilt */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {values.map((value, index) => (
-            <div
-              key={index}
-              className={`${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="group relative h-full">
-                {/* Card */}
-                <div className="relative h-full bg-gradient-to-br from-white to-primary/5 rounded-3xl p-8 border border-primary/10 hover:border-primary/30 transition-all duration-500 shadow-lg hover:shadow-2xl transform hover:-translate-y-2">
-                  {/* Glow Effect on Hover */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/0 to-secondary/0 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all duration-500" />
-                  
-                  <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                      <value.icon className="w-8 h-8 text-primary" />
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-2xl font-display font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
-                      {value.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-foreground/70 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+          {values.map((value, index) => {
+            return <ValueCard key={index} value={value} index={index} isVisible={isVisible} />;
+          })}
         </div>
 
         {/* Bottom Quote */}

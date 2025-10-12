@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Brain, Heart, Shield, Users, Sparkles, GraduationCap } from "lucide-react";
+import { useTilt } from "@/hooks/use-tilt";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -45,6 +47,62 @@ const services = [
     delay: "0.5s",
   },
 ];
+
+const ServiceCard = ({ service, index, isVisible, spiralDelay }: any) => {
+  const tiltRef = useTilt(8);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8, rotateZ: -10 }}
+      animate={isVisible ? { 
+        opacity: 1, 
+        scale: 1, 
+        rotateZ: 0,
+        transition: {
+          duration: 0.6,
+          delay: spiralDelay,
+          ease: [0.34, 1.56, 0.64, 1]
+        }
+      } : {}}
+      className="group"
+    >
+      <div 
+        ref={tiltRef}
+        className="h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-[var(--shadow-glow)] transition-all duration-500 border border-transparent hover:border-primary/30"
+        style={{ 
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.3s ease-out'
+        }}
+      >
+        {/* Icon with 3D effect */}
+        <div 
+          className={`w-16 h-16 bg-${service.color}/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+          style={{ transform: 'translateZ(30px)' }}
+        >
+          <service.icon className={`w-8 h-8 text-${service.color}`} />
+        </div>
+
+        {/* Content */}
+        <h3 
+          className="text-2xl font-display font-bold mb-4 group-hover:text-primary transition-colors"
+          style={{ transform: 'translateZ(20px)' }}
+        >
+          {service.title}
+        </h3>
+        
+        <p 
+          className="text-foreground/70 leading-relaxed"
+          style={{ transform: 'translateZ(10px)' }}
+        >
+          {service.description}
+        </p>
+
+        {/* Hover Effect Bar */}
+        <div className="mt-6 h-1 w-0 bg-gradient-to-r from-primary to-secondary rounded-full group-hover:w-full transition-all duration-500" />
+      </div>
+    </motion.div>
+  );
+};
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -101,34 +159,22 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid with Spiral Animation */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`group ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-              style={{ animationDelay: service.delay }}
-            >
-              <div className="h-full bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-transparent hover:border-primary/20">
-                {/* Icon */}
-                <div className={`w-16 h-16 bg-${service.color}/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className={`w-8 h-8 text-${service.color}`} />
-                </div>
-
-                {/* Content */}
-                <h3 className="text-2xl font-display font-bold mb-4 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                
-                <p className="text-foreground/70 leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Hover Effect Bar */}
-                <div className="mt-6 h-1 w-0 bg-gradient-to-r from-primary to-secondary rounded-full group-hover:w-full transition-all duration-500" />
-              </div>
-            </div>
-          ))}
+          {services.map((service, index) => {
+            // Calculate spiral pattern delay
+            const spiralDelay = 0.1 + (index * 0.15);
+            
+            return (
+              <ServiceCard
+                key={index}
+                service={service}
+                index={index}
+                isVisible={isVisible}
+                spiralDelay={spiralDelay}
+              />
+            );
+          })}
         </div>
 
         {/* Bottom CTA */}

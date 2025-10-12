@@ -38,19 +38,55 @@ const HeroSection = () => {
         background: "var(--gradient-hero)",
       }}
     >
-      {/* Floating Gradient Orbs */}
+      {/* Multi-Layer Parallax Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Layer 1 - Slowest */}
         <div
           className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-30 blur-3xl animate-float parallax-element"
           style={{ background: "hsl(0 79% 60% / 0.3)" }}
+          data-speed="0.2"
         />
+        
+        {/* Layer 2 */}
+        <div
+          className="absolute top-40 right-20 w-64 h-64 rounded-full opacity-20 blur-2xl animate-float-delayed parallax-element"
+          style={{ background: "hsl(186 63% 78% / 0.4)" }}
+          data-speed="0.3"
+        />
+        
+        {/* Layer 3 */}
         <div
           className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl animate-float-delayed parallax-element"
           style={{ background: "hsl(186 63% 78% / 0.3)" }}
+          data-speed="0.4"
         />
+        
+        {/* Layer 4 */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl animate-pulse-glow"
+          className="absolute bottom-40 left-20 w-80 h-80 rounded-full opacity-25 blur-3xl animate-float parallax-element"
+          style={{ background: "hsl(330 100% 85% / 0.3)" }}
+          data-speed="0.5"
+        />
+        
+        {/* Layer 5 - Center glow */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl animate-pulse-glow parallax-element"
           style={{ background: "hsl(330 100% 93% / 0.4)" }}
+          data-speed="0.6"
+        />
+        
+        {/* Layer 6 - Additional accent */}
+        <div
+          className="absolute top-60 left-1/3 w-72 h-72 rounded-full opacity-15 blur-2xl animate-float parallax-element"
+          style={{ background: "hsl(0 79% 70% / 0.2)" }}
+          data-speed="0.7"
+        />
+        
+        {/* Layer 7 - Fastest */}
+        <div
+          className="absolute bottom-32 right-1/4 w-56 h-56 rounded-full opacity-25 blur-3xl animate-float-delayed parallax-element"
+          style={{ background: "hsl(186 63% 85% / 0.3)" }}
+          data-speed="0.8"
         />
       </div>
 
