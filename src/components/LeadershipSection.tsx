@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import InteractiveTimeline from "./InteractiveTimeline";
 import SectionTransition from "./SectionTransition";
 import { GraduationCap, Award, Briefcase } from "lucide-react";
+import LiquidDistortImage from "./LiquidDistortImage";
+import approachStrategyImg from "@/assets/approach-strategy.jpg";
 
 const LeadershipSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -135,6 +137,16 @@ const LeadershipSection = () => {
                 Over 20 years of dedication to children's care
               </p>
             </div>
+            
+            {/* Strategic Approach Image */}
+            <div className="mb-12">
+              <LiquidDistortImage 
+                src={approachStrategyImg}
+                alt="Strategic Approach Visualization"
+                className="max-w-4xl mx-auto h-80"
+              />
+            </div>
+            
             <InteractiveTimeline />
           </div>
         </SectionTransition>

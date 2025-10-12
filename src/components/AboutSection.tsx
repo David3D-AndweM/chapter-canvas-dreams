@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AnimatedSVG from "@/components/AnimatedSVG";
+import MorphingBlobImage from "./MorphingBlobImage";
+import aboutInnovationImg from "@/assets/about-innovation.jpg";
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -69,9 +71,13 @@ const AboutSection = () => {
           {/* Image/Visual Side */}
           <div className={`${isVisible ? "animate-slide-in-right" : "opacity-0"} relative`}>
             <div className="relative">
-              {/* Animated SVG */}
+              {/* Morphing Blob Image */}
               <div className="mb-8">
-                <AnimatedSVG />
+                <MorphingBlobImage 
+                  src={aboutInnovationImg}
+                  alt="Innovation and Technology at Dream Path"
+                  className="w-full h-64 md:h-80"
+                />
               </div>
               
               {/* Decorative Elements */}

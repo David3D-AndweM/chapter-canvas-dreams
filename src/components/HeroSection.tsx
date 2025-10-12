@@ -4,6 +4,8 @@ import { ArrowRight, Heart, Shield, Users } from "lucide-react";
 import { useMagnetic } from "@/hooks/use-magnetic";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import HapticButton from "./HapticButton";
+import ParallaxDepthImage from "./ParallaxDepthImage";
+import heroTeamImg from "@/assets/hero-team.jpg";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -139,9 +141,19 @@ const HeroSection = () => {
             </HapticButton>
           </div>
 
+          {/* Hero Image */}
+          <div className="mb-16 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
+            <ParallaxDepthImage 
+              src={heroTeamImg}
+              alt="Dream Path Team Collaboration"
+              depth={80}
+              className="max-w-5xl mx-auto"
+            />
+          </div>
+
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fade-in-up"
-               style={{ animationDelay: "0.8s" }}>
+               style={{ animationDelay: "1s" }}>
             <div
               ref={percentRef}
               className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-primary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"

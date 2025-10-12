@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Award, Briefcase, Heart, Lightbulb, Target } from "lucide-react";
 import { useTilt } from "@/hooks/use-tilt";
 import { motion } from "framer-motion";
+import ParallaxDepthImage from "./ParallaxDepthImage";
+import valuesHarmonyImg from "@/assets/values-harmony.jpg";
 
 const values = [
   {
@@ -139,6 +141,16 @@ const ValuesSection = () => {
             Our values shape every interaction, every decision, and every home, 
             weaving hope and brighter futures into the lives of young people
           </p>
+        </div>
+
+        {/* Parallax Depth Image */}
+        <div className="mb-16">
+          <ParallaxDepthImage 
+            src={valuesHarmonyImg}
+            alt="Core Values Harmony"
+            depth={60}
+            className="max-w-3xl mx-auto h-96"
+          />
         </div>
 
         {/* Values Grid with 3D Tilt */}

@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useMagnetic } from "@/hooks/use-magnetic";
 import HapticButton from "./HapticButton";
+import MagneticRevealImage from "./MagneticRevealImage";
+import contactConnectImg from "@/assets/contact-connect.jpg";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -53,6 +55,15 @@ const ContactSection = () => {
               Ready to learn more about how Dream Path can support your young person? 
               Our dedicated team is here to help.
             </p>
+          </div>
+
+          {/* Magnetic Reveal Image */}
+          <div className="mb-16">
+            <MagneticRevealImage 
+              src={contactConnectImg}
+              alt="Connect with Dream Path"
+              className="max-w-4xl mx-auto h-96"
+            />
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
