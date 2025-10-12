@@ -3,6 +3,7 @@ import { Award, Briefcase, Heart, Lightbulb, Target } from "lucide-react";
 import { useTilt } from "@/hooks/use-tilt";
 import { motion } from "framer-motion";
 import ParallaxDepthImage from "./ParallaxDepthImage";
+import ScrollTransform3D from "./ScrollTransform3D";
 import valuesHarmonyImg from "@/assets/values-harmony.jpg";
 
 const values = [
@@ -153,10 +154,26 @@ const ValuesSection = () => {
           />
         </div>
 
-        {/* Values Grid with 3D Tilt */}
+        {/* Values Grid with 3D Scroll Transforms */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {values.map((value, index) => {
-            return <ValueCard key={index} value={value} index={index} isVisible={isVisible} />;
+            const row = Math.floor(index / 3);
+            const col = index % 3;
+            
+            return (
+              <ScrollTransform3D
+                key={index}
+                rotateX={[-20, 0]}
+                rotateY={[col === 0 ? -10 : col === 2 ? 10 : 0, 0]}
+                scale={[0.85, 1]}
+                y={[50, 0]}
+                opacity={[0, 1]}
+                scrollRange={[0, 0.6]}
+                springConfig={{ stiffness: 100, damping: 25 }}
+              >
+                <ValueCard value={value} index={index} isVisible={isVisible} />
+              </ScrollTransform3D>
+            );
           })}
         </div>
 

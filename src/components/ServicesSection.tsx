@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Brain, Heart, Shield, Users, Sparkles, GraduationCap } from "lucide-react";
 import { useTilt } from "@/hooks/use-tilt";
 import { motion } from "framer-motion";
+import RotatingCardGallery from "./RotatingCardGallery";
+import ScrollTransform3D from "./ScrollTransform3D";
 
 const services = [
   {
@@ -141,38 +143,58 @@ const ServicesSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        {/* Section Header with 3D Transform */}
+        <ScrollTransform3D
+          rotateX={[15, 0]}
+          y={[100, 0]}
+          opacity={[0, 1]}
+          scrollRange={[0, 0.3]}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
           <div className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
             <span className="text-primary font-semibold text-sm">Our Services</span>
           </div>
           
-          <h2 className={`text-5xl md:text-6xl font-display font-bold mb-6 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+          <h2 className="text-5xl md:text-6xl font-display font-bold mb-6">
             Comprehensive Support for{" "}
             <span className="text-gradient">Every Need</span>
           </h2>
           
-          <p className={`text-xl text-foreground/80 leading-relaxed ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-             style={{ animationDelay: "0.2s" }}>
+          <p className="text-xl text-foreground/80 leading-relaxed">
             A complete multi-disciplinary service where therapeutic, clinical, and 
             educational specialists work together
           </p>
+        </ScrollTransform3D>
+
+        {/* 3D Rotating Card Gallery */}
+        <div className="mb-20">
+          <RotatingCardGallery 
+            cards={services}
+            autoRotate={true}
+            rotationInterval={4000}
+          />
         </div>
 
-        {/* Services Grid with Spiral Animation */}
+        {/* Services Grid with 3D Scroll Transforms */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
-            // Calculate spiral pattern delay
             const spiralDelay = 0.1 + (index * 0.15);
             
             return (
-              <ServiceCard
+              <ScrollTransform3D
                 key={index}
-                service={service}
-                index={index}
-                isVisible={isVisible}
-                spiralDelay={spiralDelay}
-              />
+                rotateY={[index % 2 === 0 ? -15 : 15, 0]}
+                scale={[0.8, 1]}
+                opacity={[0, 1]}
+                scrollRange={[0, 0.5]}
+              >
+                <ServiceCard
+                  service={service}
+                  index={index}
+                  isVisible={isVisible}
+                  spiralDelay={spiralDelay}
+                />
+              </ScrollTransform3D>
             );
           })}
         </div>
