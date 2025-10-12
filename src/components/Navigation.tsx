@@ -45,7 +45,7 @@ const Navigation = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "glass-effect border-b border-white/20 shadow-lg py-4"
+            ? "glass-effect-premium border-b border-white/30 shadow-xl py-4"
             : "bg-primary py-6"
         }`}
       >
@@ -54,7 +54,7 @@ const Navigation = () => {
           {/* Logo */}
           <a href="#hero" className="flex items-center space-x-3 group">
             <Glow>
-              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-2xl glass-effect-frosted flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 glass-shimmer">
                 <span className="text-2xl font-display font-bold text-white">D</span>
               </div>
             </Glow>

@@ -151,7 +151,7 @@ const ServicesSection = () => {
           scrollRange={[0, 0.3]}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <div className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
+          <div className="inline-block px-6 py-2 glass-effect-premium rounded-full mb-6 glass-shimmer">
             <span className="text-primary font-semibold text-sm">Our Services</span>
           </div>
           

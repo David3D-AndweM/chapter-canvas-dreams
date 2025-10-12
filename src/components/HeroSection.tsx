@@ -99,7 +99,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full mb-8 animate-fade-in-up shadow-lg">
+          <div className="inline-flex items-center space-x-2 glass-effect-premium px-6 py-3 rounded-full mb-8 animate-fade-in-up shadow-xl glass-shimmer">
             <Heart className="w-5 h-5 text-primary" fill="currentColor" />
             <span className="text-sm font-semibold text-foreground">
               Trauma-Informed Therapeutic Care
@@ -170,7 +170,7 @@ const HeroSection = () => {
                style={{ animationDelay: "1s" }}>
             <div
               ref={percentRef}
-              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-primary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"
+              className="glass-effect-gradient rounded-3xl p-8 border border-white/30 hover:border-primary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated glass-shimmer"
             >
               <Heart className="w-12 h-12 mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" fill="currentColor" />
               <div className="text-3xl font-display font-bold mb-2 font-weight-hover">{percentage}%</div>
@@ -178,7 +178,7 @@ const HeroSection = () => {
             </div>
             
             <div
-              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-secondary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"
+              className="glass-effect-gradient rounded-3xl p-8 border border-white/30 hover:border-secondary/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated glass-shimmer"
             >
               <Shield className="w-12 h-12 mx-auto mb-4 text-secondary group-hover:scale-110 transition-transform" fill="currentColor" />
               <div className="text-3xl font-display font-bold mb-2 font-weight-hover">Expert</div>
@@ -187,7 +187,7 @@ const HeroSection = () => {
             
             <div
               ref={ageRef}
-              className="glass-effect-enhanced rounded-3xl p-8 border border-white/30 hover:border-accent/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated"
+              className="glass-effect-gradient rounded-3xl p-8 border border-white/30 hover:border-accent/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated glass-shimmer"
             >
               <Users className="w-12 h-12 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" fill="currentColor" />
               <div className="text-3xl font-display font-bold mb-2 font-weight-hover">{ageStart}-{ageEnd}</div>
