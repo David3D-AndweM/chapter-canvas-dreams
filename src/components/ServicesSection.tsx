@@ -4,6 +4,7 @@ import { useTilt } from "@/hooks/use-tilt";
 import { motion } from "framer-motion";
 import RotatingCardGallery from "./RotatingCardGallery";
 import ScrollTransform3D from "./ScrollTransform3D";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const services = [
   {
@@ -109,6 +110,7 @@ const ServiceCard = ({ service, index, isVisible, spiralDelay }: any) => {
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -166,19 +168,34 @@ const ServicesSection = () => {
           </p>
         </ScrollTransform3D>
 
-        {/* 3D Rotating Card Gallery */}
-        <div className="mb-20">
-          <RotatingCardGallery 
-            cards={services}
-            autoRotate={true}
-            rotationInterval={4000}
-          />
-        </div>
+        {/* 3D Rotating Card Gallery - Desktop Only */}
+        {!isMobile && (
+          <div className="mb-20">
+            <RotatingCardGallery 
+              cards={services}
+              autoRotate={true}
+              rotationInterval={4000}
+            />
+          </div>
+        )}
 
-        {/* Services Grid with 3D Scroll Transforms */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => {
             const spiralDelay = 0.1 + (index * 0.15);
+            
+            // Use 3D transforms only on desktop
+            if (isMobile) {
+              return (
+                <ServiceCard
+                  key={index}
+                  service={service}
+                  index={index}
+                  isVisible={isVisible}
+                  spiralDelay={spiralDelay}
+                />
+              );
+            }
             
             return (
               <ScrollTransform3D

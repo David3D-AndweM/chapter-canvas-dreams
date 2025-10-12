@@ -16,7 +16,7 @@ const CustomCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 25, stiffness: 700 };
+  const springConfig = { damping: 15, stiffness: 1000 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -26,8 +26,8 @@ const CustomCursor = () => {
       cursorY.set(e.clientY);
       setIsVisible(true);
 
-      // Create particle trail
-      if (Math.random() > 0.7) {
+      // Create particle trail (reduced frequency)
+      if (Math.random() > 0.85) {
         const newParticle: CursorParticle = {
           id: particleIdRef.current++,
           x: e.clientX,
@@ -36,10 +36,10 @@ const CustomCursor = () => {
         
         setParticles(prev => [...prev, newParticle]);
         
-        // Remove particle after animation
+        // Remove particle after animation (faster)
         setTimeout(() => {
           setParticles(prev => prev.filter(p => p.id !== newParticle.id));
-        }, 1000);
+        }, 600);
       }
     };
 
@@ -143,12 +143,12 @@ const CustomCursor = () => {
               scale: 1 
             }}
             animate={{ 
-              y: particle.y - 30,
+              y: particle.y - 20,
               opacity: 0,
               scale: 0
             }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="fixed top-0 left-0 pointer-events-none z-[9998]"
             style={{
               width: '6px',
