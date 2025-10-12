@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import InteractiveTimeline from "./InteractiveTimeline";
+import SectionTransition from "./SectionTransition";
 import { GraduationCap, Award, Briefcase } from "lucide-react";
 
 const LeadershipSection = () => {
@@ -121,6 +123,21 @@ const LeadershipSection = () => {
             </div>
           </div>
         </div>
+        
+        {/* Interactive Timeline */}
+        <SectionTransition variant="reveal">
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-4xl font-display font-bold mb-4">
+                The Journey to <span className="text-gradient">Dream Path</span>
+              </h3>
+              <p className="text-xl text-foreground/80">
+                Over 20 years of dedication to children's care
+              </p>
+            </div>
+            <InteractiveTimeline />
+          </div>
+        </SectionTransition>
       </div>
     </section>
   );
