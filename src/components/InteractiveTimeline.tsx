@@ -50,6 +50,25 @@ const timelineData = [
 const InteractiveTimeline = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
+  // Static color map to ensure Tailwind generates these classes
+  const colorMap: Record<string, { bg: string; text: string; icon: string }> = {
+    primary: {
+      bg: 'bg-primary/10',
+      text: 'text-primary',
+      icon: 'text-primary'
+    },
+    secondary: {
+      bg: 'bg-secondary/10',
+      text: 'text-secondary',
+      icon: 'text-secondary'
+    },
+    accent: {
+      bg: 'bg-accent/10',
+      text: 'text-accent',
+      icon: 'text-accent'
+    }
+  };
+
   return (
     <div className="max-w-6xl mx-auto py-16">
       <div className="relative">
@@ -81,8 +100,8 @@ const InteractiveTimeline = () => {
                   }`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`flex-shrink-0 w-12 h-12 bg-${item.color}/10 rounded-2xl flex items-center justify-center`}>
-                      <item.icon className={`w-6 h-6 text-${item.color}`} />
+                    <div className={`flex-shrink-0 w-12 h-12 ${colorMap[item.color]?.bg || 'bg-primary/10'} rounded-2xl flex items-center justify-center`}>
+                      <item.icon className={`w-6 h-6 ${colorMap[item.color]?.icon || 'text-primary'}`} />
                     </div>
                     <div className="flex-1">
                       <div className="text-sm font-semibold text-primary mb-1">{item.year}</div>

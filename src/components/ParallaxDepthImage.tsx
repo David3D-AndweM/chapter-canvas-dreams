@@ -25,12 +25,12 @@ const ParallaxDepthImage = ({ src, alt, depth = 50, className = '' }: ParallaxDe
   return (
     <div ref={ref} className={`perspective-1000 ${className}`}>
       <motion.div
-        className="relative overflow-hidden rounded-3xl"
+        className="relative overflow-hidden rounded-3xl will-change-transform"
         style={{
-          y,
-          rotateX,
-          rotateY,
-          scale,
+          y: isInView ? y : 0,
+          rotateX: isInView ? rotateX : 0,
+          rotateY: isInView ? rotateY : 0,
+          scale: isInView ? scale : 1,
           transformStyle: 'preserve-3d',
         }}
         initial={{ opacity: 0, z: -100 }}

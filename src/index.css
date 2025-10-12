@@ -253,8 +253,40 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-shimmer {
   animation: shimmer 2s infinite;
+}
+
+/* Marquee for testimonials */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
 }
 
 /* Hide scrollbar for horizontal scroll sections */

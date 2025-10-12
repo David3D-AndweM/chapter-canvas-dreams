@@ -16,12 +16,17 @@ const ParticleSystem = () => {
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationRef = useRef<number>();
+  const lastTimeRef = useRef<number>(0);
 
   useEffect(() => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     // Set canvas size
@@ -50,12 +55,34 @@ const ParticleSystem = () => {
           color: colors[Math.floor(Math.random() * colors.length)]
         });
       }
+      
+      // Start animation if not running
+      startAnimation();
     };
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop with throttling
+    const animate = (currentTime: number) => {
+      // Throttle to ~30fps
+      const deltaTime = currentTime - lastTimeRef.current;
+      if (deltaTime < 33) {
+        if (particlesRef.current.length > 0) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
+        return;
+      }
+      lastTimeRef.current = currentTime;
+
+      // Stop if no particles
+      if (particlesRef.current.length === 0) {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+          animationRef.current = undefined;
+        }
+        return;
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
@@ -84,7 +111,13 @@ const ParticleSystem = () => {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    // Start animation only when particles are created
+    const startAnimation = () => {
+      if (!animationRef.current && particlesRef.current.length > 0) {
+        lastTimeRef.current = performance.now();
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);

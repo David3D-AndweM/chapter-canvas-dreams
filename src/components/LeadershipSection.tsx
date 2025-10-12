@@ -108,13 +108,23 @@ const LeadershipSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
+          <motion.div 
+            className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+          >
             <span className="text-primary font-semibold text-sm">Leadership</span>
-          </div>
+          </motion.div>
           
-          <h2 className={`text-5xl md:text-6xl font-display font-bold mb-6 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+          <motion.h2 
+            className="text-5xl md:text-6xl font-display font-bold mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.34, 1.56, 0.64, 1] }}
+          >
             Led by <span className="text-gradient">Experience</span>
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Leadership Cards */}

@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from "react";
 import { Star, Quote } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const testimonials = [
   {
@@ -36,43 +36,11 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let scrollAmount = 0;
-    const scrollSpeed = 1;
-    let animationId: number;
-
-    const animate = () => {
-      if (!isPaused && scrollContainer) {
-        scrollAmount += scrollSpeed;
-        scrollContainer.scrollLeft = scrollAmount;
-        
-        // Reset scroll when reaching halfway (since we duplicated items)
-        const maxScroll = scrollContainer.scrollWidth / 2;
-        if (scrollAmount >= maxScroll) {
-          scrollAmount = 0;
-          scrollContainer.scrollLeft = 0;
-        }
-      }
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [isPaused]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
   return (
-    <section className="py-32 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
+    <section ref={sectionRef} className="py-32 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
       <div className="container mx-auto px-6 mb-12">
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-block px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
@@ -89,16 +57,11 @@ const TestimonialsSection = () => {
         </div>
       </div>
 
-      {/* Horizontal Scrolling Container */}
-      <div 
-        ref={scrollRef}
-        className="flex gap-8 px-6 overflow-x-hidden"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* Duplicate testimonials for seamless loop */}
-        {[...testimonials, ...testimonials].map((testimonial, index) => (
+      {/* Horizontal Scrolling Container - CSS Marquee */}
+      {isInView && (
+        <div className="marquee-container">
+          <div className="marquee-track">
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
           <motion.div
             key={index}
             className="flex-shrink-0 w-[500px] bg-white rounded-3xl p-8 shadow-xl border border-primary/10 hover:shadow-2xl transition-all duration-500 hover:border-primary/30"
@@ -122,12 +85,14 @@ const TestimonialsSection = () => {
               <p className="text-sm text-foreground/60">{testimonial.role}</p>
             </div>
           </motion.div>
-        ))}
-      </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="text-center mt-8">
-        <p className="text-sm text-foreground/60 animate-pulse">
-          {isPaused ? "⏸ Paused" : "▶ Auto-scrolling"} - Hover to pause
+        <p className="text-sm text-foreground/60">
+          Hover to pause auto-scroll
         </p>
       </div>
     </section>
