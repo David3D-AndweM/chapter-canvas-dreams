@@ -5,6 +5,9 @@ import { useMagnetic } from "@/hooks/use-magnetic";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import HapticButton from "./HapticButton";
 import ParallaxDepthImage from "./ParallaxDepthImage";
+import TextMorph from "./TextMorph";
+import VariableFontText from "./VariableFontText";
+import AnimatedHeading from "./AnimatedHeading";
 import heroTeamImg from "@/assets/hero-team.jpg";
 
 const HeroSection = () => {
@@ -103,18 +106,29 @@ const HeroSection = () => {
             </span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-tight animate-fade-in-up font-weight-hover"
-              style={{ animationDelay: "0.2s" }}>
+          {/* Main Headline with Text Morphing */}
+          <AnimatedHeading 
+            variant="split"
+            delay={0.2}
+            className="text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-tight"
+          >
             Every Child Deserves
-            <br />
-            <span className="text-gradient animate-gradient-shift">A Brighter Future</span>
+          </AnimatedHeading>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-8 leading-tight">
+            <TextMorph 
+              words={['A Brighter Future', 'A Safe Haven', 'Hope & Healing', 'To Flourish']}
+              className="text-gradient animate-gradient-shift"
+              interval={3500}
+              staggerChildren
+            />
           </h1>
 
-          {/* Subheadline */}
+          {/* Subheadline with Variable Font */}
           <p className="text-xl md:text-2xl text-foreground/80 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-light"
              style={{ animationDelay: "0.4s" }}>
-            Specialist therapeutic residential care for children and young people 
+            <VariableFontText animation="pulse" duration={3} trigger="continuous">
+              Specialist therapeutic residential care
+            </VariableFontText> for children and young people 
             with emotional and behavioural difficulties across England and Wales
           </p>
 
