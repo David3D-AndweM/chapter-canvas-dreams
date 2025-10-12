@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import SkeletonLoader from "@/components/SkeletonLoader";
 import ParticleSystem from "@/components/ParticleSystem";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 // Lazy load heavy components for better performance
 const AboutSection = lazy(() => import("@/components/AboutSection"));
@@ -17,6 +18,7 @@ const Footer = lazy(() => import("@/components/Footer"));
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <AnimatedBackground />
       <ParticleSystem />
       <Navigation />
       <main>
