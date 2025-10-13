@@ -28,8 +28,8 @@ const Navigation = () => {
   const navItems = [
     { label: "Home", href: "#hero" },
     { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Approach", href: "#approach" },
+    { label: "Services", href: "#bento-services" },
+    { label: "Approach", href: "#leadership" },
     { label: "Values", href: "#values" },
     { label: "Contact", href: "#contact" },
   ];
