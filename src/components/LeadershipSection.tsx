@@ -2,7 +2,7 @@ import { GraduationCap, Award, Briefcase, Users, Heart, Target } from "lucide-re
 import InteractiveTimeline from "./InteractiveTimeline";
 import SectionTransition from "./SectionTransition";
 import LiquidDistortImage from "./LiquidDistortImage";
-import approachStrategyImg from "@/assets/approach-strategy.jpg";
+import approachStrategyImg from "@/assets/placeholder.png";
 
 const leaders = [
   {

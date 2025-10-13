@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AnimatedSVG from "@/components/AnimatedSVG";
 import MorphingBlobImage from "./MorphingBlobImage";
-import aboutInnovationImg from "@/assets/about-innovation.jpg";
+import aboutInnovationImg from "@/assets/placeholder.png";
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
