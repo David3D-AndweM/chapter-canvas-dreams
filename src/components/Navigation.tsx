@@ -55,11 +55,11 @@ const Navigation = () => {
           <a href="#hero" className="flex items-center space-x-3 group">
             <Glow>
               <div className="w-12 h-12 rounded-2xl glass-effect-frosted flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 glass-shimmer">
-                <span className="text-2xl font-display font-bold text-white">D</span>
+                <span className={`text-2xl font-display font-bold ${isScrolled ? 'text-primary' : 'text-white'}`}>D</span>
               </div>
             </Glow>
             <motion.span 
-              className="text-2xl font-display font-bold text-white"
+              className={`text-2xl font-display font-bold ${isScrolled ? 'text-primary' : 'text-white'}`}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -73,7 +73,7 @@ const Navigation = () => {
               <motion.a
                 key={item.label}
                 href={item.href}
-                className="px-5 py-2 text-white/90 hover:text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300"
+                className={`px-5 py-2 ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'} font-medium rounded-xl hover:bg-white/10 transition-all duration-300`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -89,7 +89,7 @@ const Navigation = () => {
             <Magnetic>
               <Button
                 ref={magneticRef as any}
-                className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className={`${isScrolled ? 'bg-primary text-white' : 'bg-white text-primary'} hover:bg-opacity-90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
               >
                 Get in Touch
               </Button>
@@ -99,7 +99,7 @@ const Navigation = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className={`md:hidden p-2 ${isScrolled ? 'text-primary' : 'text-white'}`}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -113,12 +113,12 @@ const Navigation = () => {
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300"
+                className={`block px-4 py-3 ${isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'} hover:bg-white/10 rounded-xl transition-all duration-300`}
               >
                 {item.label}
               </a>
             ))}
-            <Button className="w-full bg-white text-primary hover:bg-white/90 font-semibold mt-4">
+            <Button className={`w-full ${isScrolled ? 'bg-primary text-white' : 'bg-white text-primary'} hover:bg-opacity-90 font-semibold mt-4`}>
               Get in Touch
             </Button>
           </div>
