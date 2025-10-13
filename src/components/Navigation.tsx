@@ -90,6 +90,7 @@ const Navigation = () => {
               <Button
                 ref={magneticRef as any}
                 className={`${isScrolled ? 'bg-primary text-white' : 'bg-white text-primary'} hover:bg-opacity-90 font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`}
+                onClick={() => window.location.href = '/consultation'}
               >
                 Get in Touch
               </Button>
@@ -118,7 +119,10 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button className={`w-full ${isScrolled ? 'bg-primary text-white' : 'bg-white text-primary'} hover:bg-opacity-90 font-semibold mt-4`}>
+            <Button 
+              className={`w-full ${isScrolled ? 'bg-primary text-white' : 'bg-white text-primary'} hover:bg-opacity-90 font-semibold mt-4`}
+              onClick={() => window.location.href = '/consultation'}
+            >
               Get in Touch
             </Button>
           </div>

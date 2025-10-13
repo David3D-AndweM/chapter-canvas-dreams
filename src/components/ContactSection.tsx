@@ -159,6 +159,7 @@ const ContactSection = () => {
                     size="lg"
                     hapticStrength="medium"
                     className="w-full bg-white text-primary hover:bg-white/90 font-semibold py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                    onClick={() => window.location.href = '/consultation'}
                   >
                     Request a Consultation
                     <Send className="ml-2 group-hover:translate-x-1 transition-transform" />

@@ -1,0 +1,8 @@
+[functions.calendly-oauth]
+verify_jwt = false
+
+[functions.calendly-webhook]
+verify_jwt = false
+
+[functions.calendly-events]
+verify_jwt = false
