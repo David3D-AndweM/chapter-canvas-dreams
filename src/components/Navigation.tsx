@@ -38,12 +38,12 @@ const Navigation = () => {
     <>
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent origin-left z-[60]"
+        className="fixed top-8 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent origin-left z-[60]"
         style={{ scaleX }}
       />
       
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-8 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "glass-effect-premium border-b border-white/30 shadow-xl py-4"
             : "bg-primary py-6"
