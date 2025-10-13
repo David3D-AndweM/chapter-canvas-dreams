@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useMagnetic } from "@/hooks/use-magnetic";
 import HapticButton from "./HapticButton";
 import MagneticRevealImage from "./MagneticRevealImage";
-import contactConnectImg from "@/assets/placeholder.png";
+import contactConnectImg from "@/assets/professional-caregiver.jpg";
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);

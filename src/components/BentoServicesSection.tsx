@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import BentoGrid from "./BentoGrid";
 import SectionTransition from "./SectionTransition";
 import LiquidDistortImage from "./LiquidDistortImage";
-import servicesTechImg from "@/assets/placeholder.png";
+import servicesTechImg from "@/assets/caregiver-children-learning.jpg";
 
 const BentoServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);

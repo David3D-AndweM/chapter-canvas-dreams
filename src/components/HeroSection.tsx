@@ -8,7 +8,7 @@ import ParallaxDepthImage from "./ParallaxDepthImage";
 import TextMorph from "./TextMorph";
 import VariableFontText from "./VariableFontText";
 import AnimatedHeading from "./AnimatedHeading";
-import heroTeamImg from "@/assets/placeholder.png";
+import heroTeamImg from "@/assets/children-circle-happy.jpg";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);

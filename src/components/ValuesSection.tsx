@@ -4,7 +4,7 @@ import { useTilt } from "@/hooks/use-tilt";
 import { motion } from "framer-motion";
 import ParallaxDepthImage from "./ParallaxDepthImage";
 import ScrollTransform3D from "./ScrollTransform3D";
-import valuesHarmonyImg from "@/assets/placeholder.png";
+import valuesHarmonyImg from "@/assets/children-reading-books.jpg";
 
 const values = [
   {
