@@ -39,7 +39,7 @@ const HeroSection = () => {
     <section
       id="hero"
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36"
       style={{
         background: "var(--gradient-hero)",
       }}
