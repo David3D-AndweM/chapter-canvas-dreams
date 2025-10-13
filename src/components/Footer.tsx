@@ -49,7 +49,15 @@ const Footer = () => {
               >
                 <Heart className="w-4 h-4 text-primary fill-current" />
               </motion.div>
-              <span>for every child</span>
+              <span>by</span>
+              <a 
+                href="https://davidmwape.netlify.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                David Mwape
+              </a>
             </motion.div>
           </div>
 
