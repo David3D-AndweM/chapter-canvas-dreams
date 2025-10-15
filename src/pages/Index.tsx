@@ -13,6 +13,7 @@ const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"
 const VideoSection = lazy(() => import("@/components/VideoSection"));
 const LeadershipSection = lazy(() => import("@/components/LeadershipSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
@@ -50,6 +51,10 @@ const Index = () => {
         
         <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
           <ContactSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <FAQSection />
         </Suspense>
       </main>
       

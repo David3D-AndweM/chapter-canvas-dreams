@@ -31,6 +31,7 @@ const Navigation = () => {
     { label: "Services", href: "#bento-services" },
     { label: "Approach", href: "#leadership" },
     { label: "Values", href: "#values" },
+    { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
 
