@@ -9,7 +9,6 @@ import TextMorph from "./TextMorph";
 import VariableFontText from "./VariableFontText";
 import AnimatedHeading from "./AnimatedHeading";
 import heroTeamImg from "@/assets/children-circle-happy.jpg";
-import OptimizedImage from "./OptimizedImage";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -158,14 +157,12 @@ const HeroSection = () => {
 
           {/* Hero Image */}
           <div className="mb-16 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
-            <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-[var(--shadow-elegant)]">
-              <OptimizedImage 
-                src={heroTeamImg}
-                alt="Children forming a circle representing unity and support at Dream Paths Care Services"
-                priority={true}
-                className="w-full h-auto"
-              />
-            </div>
+            <ParallaxDepthImage 
+              src={heroTeamImg}
+              alt="Children forming a circle representing unity and support at Dream Paths Care Services"
+              depth={80}
+              className="max-w-5xl mx-auto"
+            />
           </div>
 
           {/* Stats Cards */}
