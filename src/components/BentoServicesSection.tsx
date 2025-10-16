@@ -53,11 +53,11 @@ const BentoServicesSection = () => {
         </SectionTransition>
 
         {/* Liquid Distort Image */}
-        <div className="mb-16">
+        <div className="mb-12 md:mb-16 px-4">
           <LiquidDistortImage 
             src={servicesTechImg}
             alt="Digital Services Visualization"
-            className="max-w-2xl mx-auto h-96"
+            className="max-w-2xl mx-auto h-64 md:h-96"
           />
         </div>
 
