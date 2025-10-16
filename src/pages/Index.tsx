@@ -2,10 +2,10 @@ import { lazy, Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import SkeletonLoader from "@/components/SkeletonLoader";
-import ParticleSystem from "@/components/ParticleSystem";
 import DemoBanner from "@/components/DemoBanner";
 
-// Lazy load heavy components for better performance
+// Lazy load heavy and decorative components for better performance
+const ParticleSystem = lazy(() => import("@/components/ParticleSystem"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const BentoServicesSection = lazy(() => import("@/components/BentoServicesSection"));
 const ValuesSection = lazy(() => import("@/components/ValuesSection"));
@@ -20,7 +20,9 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <DemoBanner />
-      <ParticleSystem />
+      <Suspense fallback={null}>
+        <ParticleSystem />
+      </Suspense>
       <Navigation />
       <main>
         <HeroSection />
