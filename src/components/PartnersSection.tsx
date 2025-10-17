@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import teamteachLogo from "@/assets/partners/teamteach.png";
 import childProtectionLogo from "@/assets/partners/child-protection.png";
 import stJohnLogo from "@/assets/partners/st-john-ambulance.png";
@@ -32,7 +32,7 @@ const partners: Partner[] = [
   },
 ];
 
-const PartnerCard = ({ partner }: { partner: Partner }) => {
+const PartnerCard = memo(({ partner }: { partner: Partner }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -98,9 +98,13 @@ const PartnerCard = ({ partner }: { partner: Partner }) => {
       </div>
     </motion.div>
   );
-};
+});
+
+PartnerCard.displayName = "PartnerCard";
 
 const PartnersSection = () => {
+  const [isPaused, setIsPaused] = useState(false);
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -128,6 +132,11 @@ const PartnersSection = () => {
       },
     },
   };
+
+  // Dynamic animation calculation
+  const CARD_WIDTH = 320;
+  const GAP = 48;
+  const ANIMATION_DISTANCE = -(CARD_WIDTH + GAP) * partners.length;
 
   return (
     <section
@@ -171,22 +180,22 @@ const PartnersSection = () => {
 
         {/* Infinite Marquee */}
         <div className="relative">
-          <div className="overflow-hidden">
+          <div className="relative overflow-hidden">
             <motion.div
               className="flex gap-8 md:gap-12"
+              style={{ willChange: 'transform' }}
+              onHoverStart={() => setIsPaused(true)}
+              onHoverEnd={() => setIsPaused(false)}
               animate={{
-                x: [0, -1600],
+                x: prefersReducedMotion || isPaused ? 0 : [0, ANIMATION_DISTANCE],
               }}
               transition={{
                 x: {
-                  repeat: Infinity,
+                  repeat: prefersReducedMotion || isPaused ? 0 : Infinity,
                   repeatType: "loop",
                   duration: 30,
                   ease: "linear",
                 },
-              }}
-              whileHover={{
-                animationPlayState: "paused",
               }}
             >
               {/* Original Set */}
