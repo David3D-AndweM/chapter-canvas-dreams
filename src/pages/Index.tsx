@@ -10,6 +10,7 @@ const AboutSection = lazy(() => import("@/components/AboutSection"));
 const BentoServicesSection = lazy(() => import("@/components/BentoServicesSection"));
 const ValuesSection = lazy(() => import("@/components/ValuesSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const PartnersSection = lazy(() => import("@/components/PartnersSection"));
 const VideoSection = lazy(() => import("@/components/VideoSection"));
 const LeadershipSection = lazy(() => import("@/components/LeadershipSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
@@ -41,6 +42,10 @@ const Index = () => {
         
         <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
           <TestimonialsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-[400px]" />}>
+          <PartnersSection />
         </Suspense>
         
         <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
