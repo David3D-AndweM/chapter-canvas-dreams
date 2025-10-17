@@ -176,18 +176,17 @@ const PartnersSection = () => {
         <div className="relative">
           <div className="relative overflow-hidden group">
             <div
-              className="flex gap-8 md:gap-12 will-change-transform motion-reduce:animate-none [animation:partners-marquee_30s_linear_infinite] group-hover:[animation-play-state:paused]"
+              className="flex gap-8 md:gap-12 transform-gpu will-change-transform motion-reduce:animate-none [animation:partners-marquee_30s_linear_infinite] group-hover:[animation-play-state:paused]"
+              style={{ contain: 'paint' }}
             >
               {/* Original Set */}
               {partners.map((partner, index) => (
                 <PartnerCard key={`original-${index}`} partner={partner} />
               ))}
               {/* Duplicate Set for Seamless Loop */}
-              <div aria-hidden="true" className="flex gap-8 md:gap-12">
-                {partners.map((partner, index) => (
-                  <PartnerCard key={`duplicate-${index}`} partner={partner} />
-                ))}
-              </div>
+              {partners.map((partner, index) => (
+                <PartnerCard key={`duplicate-${index}`} partner={partner} />
+              ))}
             </div>
           </div>
 
