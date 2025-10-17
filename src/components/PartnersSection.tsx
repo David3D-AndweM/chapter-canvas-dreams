@@ -103,8 +103,6 @@ const PartnerCard = memo(({ partner }: { partner: Partner }) => {
 PartnerCard.displayName = "PartnerCard";
 
 const PartnersSection = () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -133,16 +131,12 @@ const PartnersSection = () => {
     },
   };
 
-  // Dynamic animation calculation
-  const CARD_WIDTH = 320;
-  const GAP = 48;
-  const ANIMATION_DISTANCE = -(CARD_WIDTH + GAP) * partners.length;
-
   return (
     <section
       ref={ref}
       className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-primary/5 to-background"
       id="partners"
+      data-cursor="no-trail"
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -180,37 +174,21 @@ const PartnersSection = () => {
 
         {/* Infinite Marquee */}
         <div className="relative">
-          <div className="relative overflow-hidden">
-            <motion.div
-              className="flex gap-8 md:gap-12"
-              style={{ willChange: 'transform' }}
-              onHoverStart={() => setIsPaused(true)}
-              onHoverEnd={() => setIsPaused(false)}
-              animate={{
-                x: prefersReducedMotion || isPaused ? 0 : [0, ANIMATION_DISTANCE],
-              }}
-              transition={{
-                x: {
-                  repeat: prefersReducedMotion || isPaused ? 0 : Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
+          <div className="relative overflow-hidden group">
+            <div
+              className="flex gap-8 md:gap-12 will-change-transform motion-reduce:animate-none [animation:partners-marquee_30s_linear_infinite] group-hover:[animation-play-state:paused]"
             >
               {/* Original Set */}
               {partners.map((partner, index) => (
                 <PartnerCard key={`original-${index}`} partner={partner} />
               ))}
               {/* Duplicate Set for Seamless Loop */}
-              {partners.map((partner, index) => (
-                <PartnerCard key={`duplicate-${index}`} partner={partner} />
-              ))}
-              {/* Triple Set for Extra Smoothness */}
-              {partners.map((partner, index) => (
-                <PartnerCard key={`triple-${index}`} partner={partner} />
-              ))}
-            </motion.div>
+              <div aria-hidden="true" className="flex gap-8 md:gap-12">
+                {partners.map((partner, index) => (
+                  <PartnerCard key={`duplicate-${index}`} partner={partner} />
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Fade Edges */}

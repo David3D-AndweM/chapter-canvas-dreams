@@ -26,8 +26,12 @@ const CustomCursor = () => {
       cursorY.set(e.clientY);
       setIsVisible(true);
 
-      // Create particle trail (reduced frequency)
-      if (Math.random() > 0.85) {
+      // Check if in no-trail zone
+      const el = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null;
+      const inNoTrailZone = el?.closest('[data-cursor="no-trail"]');
+
+      // Create particle trail (reduced frequency, skip in no-trail zones)
+      if (!inNoTrailZone && Math.random() > 0.85) {
         const newParticle: CursorParticle = {
           id: particleIdRef.current++,
           x: e.clientX,
