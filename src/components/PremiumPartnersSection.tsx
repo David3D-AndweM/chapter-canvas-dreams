@@ -92,13 +92,13 @@ const PremiumPartnersSection = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Dream Path",
-    "url": "https://yourdomain.com",
+    "name": "Dream Path Care Services",
+    "url": "https://dreampathcare.co.uk",
+    "logo": "https://dreampathcare.co.uk/dreampath-logo.png",
     "partner": partners.map(partner => ({
       "@type": "Organization",
       "name": partner.name,
       "url": partner.url,
-      "logo": partner.logo,
       "description": partner.description
     }))
   };
