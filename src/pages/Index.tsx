@@ -2,10 +2,10 @@ import { lazy, Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import SkeletonLoader from "@/components/SkeletonLoader";
-import ParticleSystem from "@/components/ParticleSystem";
 import DemoBanner from "@/components/DemoBanner";
 
-// Lazy load heavy components for better performance
+// Lazy load heavy and decorative components for better performance
+const ParticleSystem = lazy(() => import("@/components/ParticleSystem"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const BentoServicesSection = lazy(() => import("@/components/BentoServicesSection"));
 const ValuesSection = lazy(() => import("@/components/ValuesSection"));
@@ -13,13 +13,16 @@ const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"
 const VideoSection = lazy(() => import("@/components/VideoSection"));
 const LeadershipSection = lazy(() => import("@/components/LeadershipSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <DemoBanner />
-      <ParticleSystem />
+      <Suspense fallback={null}>
+        <ParticleSystem />
+      </Suspense>
       <Navigation />
       <main>
         <HeroSection />
@@ -50,6 +53,10 @@ const Index = () => {
         
         <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
           <ContactSection />
+        </Suspense>
+        
+        <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
+          <FAQSection />
         </Suspense>
       </main>
       

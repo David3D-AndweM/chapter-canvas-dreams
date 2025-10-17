@@ -51,6 +51,41 @@ const bentoItems = [
 const BentoCard = ({ item, index }: any) => {
   const tiltRef = useTilt(5);
 
+  const colorClasses = {
+    primary: {
+      bg: 'bg-primary/5',
+      border: 'border-primary/20 hover:border-primary/40',
+      iconBg: 'bg-primary/10',
+      iconText: 'text-primary',
+      textHover: 'group-hover:text-primary',
+      glow: 'bg-primary/5',
+      pattern1: 'bg-primary',
+      pattern2: 'bg-primary'
+    },
+    secondary: {
+      bg: 'bg-secondary/5',
+      border: 'border-secondary/20 hover:border-secondary/40',
+      iconBg: 'bg-secondary/10',
+      iconText: 'text-secondary',
+      textHover: 'group-hover:text-secondary',
+      glow: 'bg-secondary/5',
+      pattern1: 'bg-secondary',
+      pattern2: 'bg-secondary'
+    },
+    accent: {
+      bg: 'bg-accent/5',
+      border: 'border-accent/20 hover:border-accent/40',
+      iconBg: 'bg-accent/10',
+      iconText: 'text-accent',
+      textHover: 'group-hover:text-accent',
+      glow: 'bg-accent/5',
+      pattern1: 'bg-accent',
+      pattern2: 'bg-accent'
+    }
+  };
+
+  const colors = colorClasses[item.color as keyof typeof colorClasses];
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -64,14 +99,13 @@ const BentoCard = ({ item, index }: any) => {
         }
       }}
       viewport={{ once: true }}
-      style={{ gridArea: item.gridArea }}
-      className="group"
+      className={`group md:col-span-${item.gridArea.split('/')[0].trim().split(' ')[1]} lg:col-span-${item.gridArea.split('/')[1].trim().split(' ')[1]}`}
     >
       <div
         ref={tiltRef}
         className={`relative h-full ${
-          item.featured ? 'min-h-[400px]' : 'min-h-[200px]'
-        } bg-gradient-to-br from-white to-${item.color}/5 rounded-3xl p-8 border border-${item.color}/20 hover:border-${item.color}/40 transition-all duration-500 shadow-lg hover:shadow-[var(--shadow-glow)] overflow-hidden`}
+          item.featured ? 'min-h-[300px] md:min-h-[400px]' : 'min-h-[250px] md:min-h-[200px]'
+        } bg-gradient-to-br from-white ${colors.bg} rounded-3xl p-6 md:p-8 border ${colors.border} transition-all duration-500 shadow-lg hover:shadow-[var(--shadow-glow)] overflow-hidden`}
         style={{
           transformStyle: 'preserve-3d',
           transition: 'transform 0.3s ease-out'
@@ -79,28 +113,28 @@ const BentoCard = ({ item, index }: any) => {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className={`absolute top-0 right-0 w-32 h-32 bg-${item.color} rounded-full blur-3xl`} />
-          <div className={`absolute bottom-0 left-0 w-24 h-24 bg-${item.color} rounded-full blur-2xl`} />
+          <div className={`absolute top-0 right-0 w-32 h-32 ${colors.pattern1} rounded-full blur-3xl`} />
+          <div className={`absolute bottom-0 left-0 w-24 h-24 ${colors.pattern2} rounded-full blur-2xl`} />
         </div>
 
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col">
           <div 
-            className={`w-16 h-16 bg-${item.color}/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+            className={`w-14 h-14 md:w-16 md:h-16 ${colors.iconBg} rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}
             style={{ transform: 'translateZ(30px)' }}
           >
-            <item.icon className={`w-8 h-8 text-${item.color}`} />
+            <item.icon className={`w-7 h-7 md:w-8 md:h-8 ${colors.iconText}`} />
           </div>
 
           <h3 
-            className={`${item.featured ? 'text-3xl' : 'text-2xl'} font-display font-bold mb-4 text-foreground group-hover:text-${item.color} transition-colors`}
+            className={`${item.featured ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-display font-bold mb-3 md:mb-4 text-foreground ${colors.textHover} transition-colors`}
             style={{ transform: 'translateZ(20px)' }}
           >
             {item.title}
           </h3>
 
           <p 
-            className={`${item.featured ? 'text-lg' : 'text-base'} text-foreground/70 leading-relaxed ${item.featured ? 'mb-auto' : ''}`}
+            className={`${item.featured ? 'text-base md:text-lg' : 'text-sm md:text-base'} text-foreground/70 leading-relaxed ${item.featured ? 'mb-auto' : ''}`}
             style={{ transform: 'translateZ(10px)' }}
           >
             {item.description}
@@ -110,7 +144,7 @@ const BentoCard = ({ item, index }: any) => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-6 px-6 py-3 bg-primary text-white rounded-2xl font-semibold hover:bg-primary/90 transition-colors"
+              className="mt-6 px-6 py-3 bg-primary text-white rounded-2xl font-semibold hover:bg-primary/90 transition-colors text-sm md:text-base"
             >
               Learn More
             </motion.button>
@@ -118,7 +152,7 @@ const BentoCard = ({ item, index }: any) => {
         </div>
 
         {/* Hover Glow Effect */}
-        <div className={`absolute inset-0 bg-gradient-to-br from-${item.color}/0 to-${item.color}/0 group-hover:from-${item.color}/5 group-hover:to-${item.color}/10 transition-all duration-500 rounded-3xl`} />
+        <div className={`absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:${colors.glow} transition-all duration-500 rounded-3xl`} />
       </div>
     </motion.div>
   );
@@ -126,7 +160,7 @@ const BentoCard = ({ item, index }: any) => {
 
 const BentoGrid = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[200px]">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
       {bentoItems.map((item, index) => (
         <BentoCard key={index} item={item} index={index} />
       ))}

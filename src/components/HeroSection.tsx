@@ -159,7 +159,7 @@ const HeroSection = () => {
           <div className="mb-16 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
             <ParallaxDepthImage 
               src={heroTeamImg}
-              alt="Dream Path Team Collaboration"
+              alt="Children forming a circle representing unity and support at Dream Paths Care Services"
               depth={80}
               className="max-w-5xl mx-auto"
             />
