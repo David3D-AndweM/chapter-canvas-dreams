@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useMagnetic } from "@/hooks/use-magnetic";
 import { Glow, Magnetic } from "./MicroInteractions";
+import dreampathLogo from "@/assets/dreampath-logo.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,19 +54,16 @@ const Navigation = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex items-center space-x-3 group">
+          <a href="#hero" className="flex items-center group">
             <Glow>
-              <div className="w-12 h-12 rounded-2xl glass-effect-frosted flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 glass-shimmer">
-                <span className={`text-2xl font-display font-bold ${isScrolled ? 'text-primary' : 'text-white'}`}>D</span>
-              </div>
+              <motion.img 
+                src={dreampathLogo} 
+                alt="Dreampath Care Services" 
+                className="h-12 md:h-16 w-auto transform group-hover:scale-105 transition-transform duration-300"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              />
             </Glow>
-            <motion.span 
-              className={`text-2xl font-display font-bold ${isScrolled ? 'text-primary' : 'text-white'}`}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Dream Path
-            </motion.span>
           </a>
 
           {/* Desktop Navigation */}

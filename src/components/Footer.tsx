@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { Bounce } from "./MicroInteractions";
+import dreampathLogo from "@/assets/dreampath-logo.png";
 
 const Footer = () => {
   return (
@@ -9,22 +10,17 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <Bounce>
-                <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center">
-                  <span className="text-2xl font-display font-bold text-white">D</span>
-                </div>
-              </Bounce>
-              <motion.span 
-                className="text-2xl font-display font-bold"
+            <Bounce>
+              <motion.img 
+                src={dreampathLogo} 
+                alt="Dreampath Care Services" 
+                className="h-16 w-auto mb-4"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-              >
-                Dream Path
-              </motion.span>
-            </div>
+              />
+            </Bounce>
             <motion.p 
               className="text-white/70 leading-relaxed mb-4"
               initial={{ opacity: 0 }}
