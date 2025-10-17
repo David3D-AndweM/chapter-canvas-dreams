@@ -10,11 +10,11 @@ const AboutSection = lazy(() => import("@/components/AboutSection"));
 const BentoServicesSection = lazy(() => import("@/components/BentoServicesSection"));
 const ValuesSection = lazy(() => import("@/components/ValuesSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
-const PartnersSection = lazy(() => import("@/components/PartnersSection"));
 const VideoSection = lazy(() => import("@/components/VideoSection"));
 const LeadershipSection = lazy(() => import("@/components/LeadershipSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
+const PremiumPartnersSection = lazy(() => import("@/components/PremiumPartnersSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
@@ -44,10 +44,6 @@ const Index = () => {
           <TestimonialsSection />
         </Suspense>
         
-        <Suspense fallback={<SkeletonLoader className="min-h-[400px]" />}>
-          <PartnersSection />
-        </Suspense>
-        
         <Suspense fallback={<SkeletonLoader className="min-h-screen" />}>
           <VideoSection />
         </Suspense>
@@ -64,6 +60,10 @@ const Index = () => {
           <FAQSection />
         </Suspense>
       </main>
+      
+      <Suspense fallback={<SkeletonLoader className="min-h-[400px]" />}>
+        <PremiumPartnersSection />
+      </Suspense>
       
       <Suspense fallback={<SkeletonLoader className="min-h-[400px]" />}>
         <Footer />
