@@ -190,7 +190,7 @@ const Consultation = () => {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => window.location.href = "mailto:info@dreampath.care"}
+                onClick={() => window.location.href = "mailto:Info@dreampathservices.co.uk"}
                 className="font-semibold"
               >
                 Email Us

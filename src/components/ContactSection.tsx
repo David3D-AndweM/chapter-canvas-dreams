@@ -180,7 +180,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <p className="text-foreground/70">info@dreampath.care</p>
+                      <p className="text-foreground/70">Info@dreampathservices.co.uk</p>
                       <p className="text-sm text-foreground/50">We'll respond within 24 hours</p>
                     </div>
                   </div>
