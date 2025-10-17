@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const DemoBanner = () => {
   const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-  const message = `📅 ${today} • Dream Path Services - Therapeutic Care Excellence • 🛡️ Ofsted Registered & Inspected • 💙 Trauma-Informed Care Specialists • 🏆 TeamTeach Certified Staff • 📞 24/7 Support Available • ✉️ Info@dreampathservices.co.uk • 🌟 Person-Centered Approach • 💡 Early intervention makes a lasting difference • 📍 Serving England & Wales • 💬 Free Consultations Available`;
+  const message = `${today} • Dream Path Services - Therapeutic Care Excellence • Ofsted Registered & Inspected • Trauma-Informed Care Specialists • TeamTeach Certified Staff • 24/7 Support Available • Info@dreampathservices.co.uk • Person-Centered Approach • Early intervention makes a lasting difference • Serving England & Wales • Free Consultations Available`;
   
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 backdrop-blur-md border-b border-primary/10 overflow-hidden">
