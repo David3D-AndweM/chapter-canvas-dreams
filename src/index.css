@@ -337,6 +337,16 @@ All colors MUST be HSL.
   }
 }
 
+/* Partners Marquee - Seamless infinite scroll with GPU acceleration */
+@keyframes partners-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
@@ -362,6 +372,33 @@ All colors MUST be HSL.
   .marquee-track {
     animation: none !important;
   }
+}
+
+/* Partners Marquee Animation - GPU Accelerated */
+@keyframes partners-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Premium Partners Section - Flicker Prevention */
+.premium-partners img,
+.premium-partner-logo {
+  content-visibility: visible !important;
+  contain-intrinsic-size: auto 160px;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  image-rendering: auto;
+}
+
+.mask-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 /* Hide scrollbar for horizontal scroll sections */

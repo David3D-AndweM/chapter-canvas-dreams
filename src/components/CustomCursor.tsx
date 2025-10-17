@@ -10,6 +10,7 @@ interface CursorParticle {
 const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [inNoBlendZone, setInNoBlendZone] = useState(false);
   const [particles, setParticles] = useState<CursorParticle[]>([]);
   const particleIdRef = useRef(0);
   
@@ -26,8 +27,12 @@ const CustomCursor = () => {
       cursorY.set(e.clientY);
       setIsVisible(true);
 
-      // Create particle trail (reduced frequency)
-      if (Math.random() > 0.85) {
+      // Check if in no-trail zone
+      const el = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null;
+      const inNoTrailZone = el?.closest('[data-cursor="no-trail"]');
+      setInNoBlendZone(!!inNoTrailZone);
+      // Create particle trail (reduced frequency, skip in no-trail zones)
+      if (!inNoTrailZone && Math.random() > 0.85) {
         const newParticle: CursorParticle = {
           id: particleIdRef.current++,
           x: e.clientX,
@@ -98,7 +103,7 @@ const CustomCursor = () => {
     <>
       {/* Main Cursor */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+        className={inNoBlendZone ? "fixed top-0 left-0 pointer-events-none z-[9999]" : "fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"}
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -107,7 +112,7 @@ const CustomCursor = () => {
         <motion.div
           animate={{
             scale: isHovering ? 1.5 : 1,
-            opacity: isVisible ? 1 : 0
+            opacity: isVisible && !inNoBlendZone ? 1 : 0
           }}
           transition={{ duration: 0.15 }}
           className="relative -translate-x-1/2 -translate-y-1/2"
