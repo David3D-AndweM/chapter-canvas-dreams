@@ -11,9 +11,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <Bounce>
-              <motion.img 
-                src={dreampathLogo} 
-                alt="Dreampath Care Services" 
+              <motion.img
+                src={dreampathLogo}
+                alt="Dreampath Care Services"
                 className="h-16 w-auto mb-4"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -21,17 +21,16 @@ const Footer = () => {
                 transition={{ duration: 0.6 }}
               />
             </Bounce>
-            <motion.p 
+            <motion.p
               className="text-white/70 leading-relaxed mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Specialist therapeutic residential care for children and young people 
-              across England and Wales.
+              Specialist therapeutic residential care for children and young people across England and Wales.
             </motion.p>
-            <motion.div 
+            <motion.div
               className="flex items-center space-x-2 text-white/80"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -39,16 +38,13 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <span>Made with</span>
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
+              <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
                 <Heart className="w-4 h-4 text-primary fill-current" />
               </motion.div>
               <span>by</span>
-              <a 
-                href="https://davidmwape.netlify.app" 
-                target="_blank" 
+              <a
+                href="https://github.com/David3D-AndweM"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition-colors font-medium"
               >
@@ -63,10 +59,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {["About", "Services", "Approach", "Values", "FAQ", "Contact"].map((link) => (
                 <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
+                  <a href={`#${link.toLowerCase()}`} className="text-white/70 hover:text-white transition-colors">
                     {link}
                   </a>
                 </li>
@@ -89,9 +82,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 text-center md:text-left">
           <div className="md:flex md:items-center md:justify-between">
-            <p className="text-white/50 text-sm">
-              © {new Date().getFullYear()} Dream Path. All rights reserved.
-            </p>
+            <p className="text-white/50 text-sm">© {new Date().getFullYear()} Dream Path. All rights reserved.</p>
             <div className="flex items-center justify-center md:justify-end space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-white/50 hover:text-white text-sm transition-colors">
                 Privacy Policy
