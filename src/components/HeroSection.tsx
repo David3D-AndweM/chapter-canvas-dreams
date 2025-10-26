@@ -167,7 +167,7 @@ const HeroSection = () => {
 
           {/* Stats Cards */}
           <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fade-in-up"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto animate-fade-in-up"
             style={{ animationDelay: "1s" }}
           >
             <div
