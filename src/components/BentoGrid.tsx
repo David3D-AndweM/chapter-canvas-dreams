@@ -38,13 +38,6 @@ const bentoItems = [
     description: 'Three-phase recovery for CSE and HSB services',
     gridArea: 'span 1 / span 1',
     color: 'secondary'
-  },
-  {
-    icon: Sparkles,
-    title: 'Forensic Services',
-    description: 'Alternative to secure placements with intensive support',
-    gridArea: 'span 2 / span 1',
-    color: 'accent'
   }
 ];
 
