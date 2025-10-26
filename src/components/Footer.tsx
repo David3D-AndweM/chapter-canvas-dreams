@@ -73,7 +73,6 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li className="text-white/70">Therapeutic Care</li>
               <li className="text-white/70">Complex Needs</li>
-              <li className="text-white/70">Forensic Services</li>
               <li className="text-white/70">Educational Support</li>
             </ul>
           </div>

@@ -21,7 +21,7 @@ const services = [
       "Family involvement and systemic therapy",
       "Crisis intervention and emotional regulation support"
     ],
-    targetAudience: "Young people aged 11-18 who have experienced trauma, attachment difficulties, or emotional challenges requiring therapeutic intervention and a nurturing care environment.",
+    targetAudience: "Young people who have experienced trauma, attachment difficulties, or emotional challenges requiring therapeutic intervention and a nurturing care environment.",
     qualifications: "Our therapeutic team includes qualified therapists, counsellors, and psychologists with extensive experience in childhood trauma, attachment theory, and evidence-based therapeutic modalities.",
     outcomes: [
       "Improved emotional regulation and self-awareness",
@@ -46,7 +46,7 @@ const services = [
       "Crisis intervention and safety planning",
       "Mental health awareness and psychoeducation"
     ],
-    targetAudience: "Young people aged 11-18 experiencing mental health difficulties including anxiety, depression, emotional dysregulation, or complex psychological needs requiring specialist intervention.",
+    targetAudience: "Young people experiencing mental health difficulties including anxiety, depression, emotional dysregulation, or complex psychological needs requiring specialist intervention.",
     qualifications: "Our mental health team comprises clinical psychologists, consultant psychiatrists, mental health nurses, and trained behaviour support professionals, all with expertise in adolescent mental health.",
     outcomes: [
       "Improved mental health stability and wellbeing",
@@ -71,7 +71,7 @@ const services = [
       "Therapeutic integration within education",
       "Transition support to further education or employment"
     ],
-    targetAudience: "Young people aged 11-18 who have experienced educational disruption, school exclusion, or require specialist educational provision alongside therapeutic support.",
+    targetAudience: "Young people who have experienced educational disruption, school exclusion, or require specialist educational provision alongside therapeutic support.",
     qualifications: "Our teaching staff are qualified educators with experience in SEND education, trauma-informed teaching practices, and alternative provision. They work alongside educational psychologists and learning support specialists.",
     outcomes: [
       "Re-engagement with learning and education",
@@ -96,7 +96,7 @@ const services = [
       "Sensory integration and regulation support",
       "Collaborative working with external professionals"
     ],
-    targetAudience: "Young people aged 11-18 with complex emotional and behavioural needs, including those with neurodevelopmental conditions, attachment difficulties, or histories of placement breakdown.",
+    targetAudience: "Young people with complex emotional and behavioural needs, including those with neurodevelopmental conditions, attachment difficulties, or histories of placement breakdown.",
     qualifications: "Staff are trained in positive behaviour support, therapeutic crisis intervention, sensory integration, and trauma-informed care, working alongside psychologists and behaviour analysts.",
     outcomes: [
       "Reduction in challenging behaviours",
@@ -121,7 +121,7 @@ const services = [
       "Healthy relationships and boundaries education",
       "Safety planning and risk management"
     ],
-    targetAudience: "Young people aged 11-18 who have experienced child sexual exploitation or who display harmful sexual behaviours, requiring specialist therapeutic intervention in a safe environment.",
+    targetAudience: "Young people who have experienced child sexual exploitation or who display harmful sexual behaviours, requiring specialist therapeutic intervention in a safe environment.",
     qualifications: "Our team includes therapists specialized in sexual trauma, CSE, and HSB, trained in evidence-based therapeutic modalities including trauma-focused CBT and attachment-based interventions.",
     outcomes: [
       "Recovery from trauma and reduced PTSD symptoms",
@@ -132,31 +132,6 @@ const services = [
     ],
     color: "secondary",
     delay: "0.4s",
-  },
-  {
-    icon: Sparkles,
-    title: "Forensic Services",
-    description: "Alternative to secure placements with intensive therapeutic interventions and high staff ratios.",
-    fullDescription: "Our forensic service provides an alternative to secure accommodation for young people who have been involved in offending behaviour or are at risk of custody. Through intensive therapeutic interventions, high staff ratios, and robust risk management, we create an environment that balances safety with therapeutic progress.\n\nWe work closely with youth justice services, police, and social care to provide coordinated support that addresses the root causes of offending behaviour while promoting positive behaviour change. Our approach recognizes that many young people who offend have themselves experienced trauma, adversity, and unmet needs.",
-    features: [
-      "Alternative to secure accommodation",
-      "High staff ratios and 24/7 supervision",
-      "Offending behaviour programmes",
-      "Restorative justice approaches",
-      "Intensive therapeutic interventions",
-      "Multi-agency risk management"
-    ],
-    targetAudience: "Young people aged 11-18 involved in offending behaviour, at risk of custody, or requiring step-down from secure accommodation, who can benefit from intensive community-based support.",
-    qualifications: "Staff are trained in youth justice, risk assessment and management, trauma-informed practice, and offending behaviour interventions, working alongside forensic psychologists and youth justice professionals.",
-    outcomes: [
-      "Reduction in offending and risky behaviours",
-      "Improved understanding of consequences and victim impact",
-      "Development of pro-social skills and values",
-      "Successful diversion from custody or secure care",
-      "Enhanced community integration and positive activities"
-    ],
-    color: "accent",
-    delay: "0.5s",
   },
 ];
 

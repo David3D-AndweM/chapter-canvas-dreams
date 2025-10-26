@@ -1,8 +1,5 @@
 import { GraduationCap, Award, Briefcase, Users, Heart, Target } from "lucide-react";
-import InteractiveTimeline from "./InteractiveTimeline";
 import SectionTransition from "./SectionTransition";
-import LiquidDistortImage from "./LiquidDistortImage";
-import approachStrategyImg from "@/assets/child-bike-outdoor.jpg";
 
 const leaders = [
   {
@@ -143,31 +140,6 @@ const LeadershipSection = () => {
             </div>
           ))}
         </div>
-        
-        {/* Interactive Timeline */}
-        <SectionTransition variant="reveal">
-          <div className="mt-20">
-            <div className="text-center mb-12">
-              <h3 className="text-4xl font-display font-bold mb-4">
-                The Journey to <span className="text-gradient">Dream Path</span>
-              </h3>
-              <p className="text-xl text-foreground/80">
-                Over 20 years of dedication to children's care
-              </p>
-            </div>
-            
-            {/* Strategic Approach Image */}
-            <div className="mb-12">
-              <LiquidDistortImage 
-                src={approachStrategyImg}
-                alt="Strategic Approach Visualization"
-                className="max-w-4xl mx-auto h-80"
-              />
-            </div>
-            
-            <InteractiveTimeline />
-          </div>
-        </SectionTransition>
       </div>
     </section>
   );
