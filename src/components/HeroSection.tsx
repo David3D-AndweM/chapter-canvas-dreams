@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Heart, Shield, Users } from "lucide-react";
+import { ArrowRight, Heart, Shield } from "lucide-react";
 import { useMagnetic } from "@/hooks/use-magnetic";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import HapticButton from "./HapticButton";
@@ -15,8 +15,6 @@ const HeroSection = () => {
   const magneticRef1 = useMagnetic(0.15);
   const magneticRef2 = useMagnetic(0.15);
   const { count: percentage, ref: percentRef } = useCounterAnimation(100, 2000);
-  const { count: ageStart, ref: ageRef } = useCounterAnimation(11, 1500);
-  const { count: ageEnd, ref: ageEndRef } = useCounterAnimation(18, 1500, 11);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -193,17 +191,6 @@ const HeroSection = () => {
               <div className="text-sm text-foreground/70 font-medium">Qualified Staff</div>
             </div>
 
-            <div
-              ref={ageRef}
-              className="glass-effect-gradient rounded-3xl p-8 border border-white/30 hover:border-accent/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[var(--shadow-glow)] group gpu-accelerated glass-shimmer"
-            >
-              <Users
-                className="w-12 h-12 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform"
-                fill="currentColor"
-              />
-              <div className="text-3xl font-display font-bold mb-2 font-weight-hover">{ageStart}-18</div>
-              <div className="text-sm text-foreground/70 font-medium">Young People</div>
-            </div>
           </div>
         </div>
       </div>

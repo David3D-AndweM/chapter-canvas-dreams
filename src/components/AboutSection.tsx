@@ -88,18 +88,6 @@ const AboutSection = () => {
               <div className="relative bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl p-12 backdrop-blur-sm border border-white/50 shadow-2xl">
                 <div className="space-y-8">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
-                      <span className="text-3xl font-bold text-primary">20+</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-display font-bold mb-2">Years of Experience</h3>
-                      <p className="text-foreground/70">
-                        Dedicated to providing exceptional therapeutic care
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center">
                       <span className="text-3xl font-bold text-primary">MDT</span>
                     </div>
