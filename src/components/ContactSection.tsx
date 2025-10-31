@@ -169,7 +169,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                      <p className="text-foreground/70">+44 (0) 123 456 7890</p>
+                      <p className="text-foreground/70">+2607985 772809</p>
                       <p className="text-sm text-foreground/50">Monday - Friday, 9am - 6pm</p>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Locations</h4>
-                      <p className="text-foreground/70">England & Wales</p>
+                      <p className="text-foreground/70">United Kingdom</p>
                       <p className="text-sm text-foreground/50">Multiple locations to serve you</p>
                     </div>
                   </div>
