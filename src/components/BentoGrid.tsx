@@ -19,13 +19,6 @@ const bentoItems = [
     color: 'secondary'
   },
   {
-    icon: GraduationCap,
-    title: 'Education',
-    description: 'DfE registered on-site school',
-    gridArea: 'span 1 / span 1',
-    color: 'accent'
-  },
-  {
     icon: Shield,
     title: 'Complex Needs',
     description: 'Specialist support for emotional and behavioural difficulties',

@@ -59,31 +59,6 @@ const services = [
     delay: "0.1s",
   },
   {
-    icon: GraduationCap,
-    title: "Educational Services",
-    description: "DfE registered on-site school with tailored education packages for every young person.",
-    fullDescription: "Education is a fundamental right and a pathway to future opportunities. Our DfE registered on-site school provides high-quality education in a supportive, therapeutic environment. We understand that traditional educational settings may not have met the needs of the young people in our care, which is why we offer flexible, individualized learning approaches.\n\nOur education team works closely with therapeutic and care staff to ensure that learning is accessible, engaging, and tailored to each young person's abilities, interests, and aspirations. From functional skills to GCSEs and vocational qualifications, we support educational progression at every level.",
-    features: [
-      "DfE registered on-site school provision",
-      "Personalized education plans for each learner",
-      "Small class sizes and 1-to-1 support",
-      "GCSE, functional skills, and vocational qualifications",
-      "Therapeutic integration within education",
-      "Transition support to further education or employment"
-    ],
-    targetAudience: "Young people who have experienced educational disruption, school exclusion, or require specialist educational provision alongside therapeutic support.",
-    qualifications: "Our teaching staff are qualified educators with experience in SEND education, trauma-informed teaching practices, and alternative provision. They work alongside educational psychologists and learning support specialists.",
-    outcomes: [
-      "Re-engagement with learning and education",
-      "Achievement of qualifications and certifications",
-      "Improved literacy and numeracy skills",
-      "Development of independent learning skills",
-      "Successful transition to further education or employment"
-    ],
-    color: "accent",
-    delay: "0.2s",
-  },
-  {
     icon: Shield,
     title: "Complex Needs Service",
     description: "Specialist support for young people with emotional and behavioural difficulties, offering stability and structure.",
