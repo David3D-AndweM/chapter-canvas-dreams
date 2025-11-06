@@ -8,23 +8,27 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Brand Colors - Soft Pastel Palette */
-    --primary: 180 50% 78%; /* #AEE1E1 - Dream Aqua */
+    /* Brand Colors - Lavender Lead Palette (Option A) */
+    --primary: 270 50% 90%; /* #E5D9F2 - Sleepy Lavender (PRIMARY) */
     --primary-foreground: 0 0% 20%;
     
-    --secondary: 199 50% 86%; /* #CBE6EF - Soft Sky Blue */
+    --secondary: 180 50% 78%; /* #AEE1E1 - Dream Aqua (SECONDARY) */
     --secondary-foreground: 0 0% 20%;
     
     --background: 0 0% 100%; /* #FFFFFF - Moon White */
     --foreground: 0 0% 15%;
     
-    --accent: 25 100% 87%; /* #FFD9C0 - Starlight Peach */
+    --accent: 25 100% 87%; /* #FFD9C0 - Starlight Peach (ACCENT/CTA) */
     --accent-foreground: 0 0% 20%;
     
-    /* Additional Palette Colors */
-    --lavender: 270 50% 90%; /* #E5D9F2 - Sleepy Lavender */
-    --mint: 132 47% 90%; /* #D8F3DC - Pastel Mint Green */
-    --butter: 52 100% 86%; /* #FFF5BA - Warm Butter Yellow */
+    /* Functional Colors */
+    --success: 132 47% 90%; /* #D8F3DC - Pastel Mint Green */
+    --success-foreground: 0 0% 20%;
+    
+    --info: 52 100% 86%; /* #FFF5BA - Warm Butter Yellow */
+    --info-foreground: 0 0% 20%;
+    
+    --sky: 199 50% 86%; /* #CBE6EF - Soft Sky Blue */
     
     /* UI Elements */
     --card: 0 0% 100%;
@@ -33,28 +37,30 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 15%;
     
-    --muted: 199 50% 95%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 199 50% 95%; /* Soft Sky Blue tint */
+    --muted-foreground: 0 0% 40%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 199 40% 90%;
-    --input: 199 40% 90%;
-    --ring: 180 50% 78%;
+    --border: 270 40% 85%; /* Lavender tint for borders */
+    --input: 270 30% 93%; /* Very light lavender for inputs */
+    --ring: 270 50% 90%; /* Lavender for focus rings */
     
     --radius: 1rem;
     
-    /* Custom Design Tokens - Soft Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(180 50% 78% / 0.2), hsl(270 50% 90% / 0.2), hsl(199 50% 86% / 0.2));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(199 50% 96%));
-    --gradient-accent: linear-gradient(135deg, hsl(25 100% 87%), hsl(25 100% 80%));
+    /* Custom Design Tokens - Lavender Lead Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(270 50% 90% / 0.3), hsl(180 50% 78% / 0.2), hsl(132 47% 90% / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(270 50% 96%));
+    --gradient-accent: linear-gradient(135deg, hsl(25 100% 87%), hsl(25 100% 82%));
     --gradient-secondary: linear-gradient(135deg, hsl(180 50% 78%), hsl(199 50% 86%));
-    --gradient-pastel: linear-gradient(135deg, hsl(180 50% 78%), hsl(270 50% 90%), hsl(132 47% 90%));
+    --gradient-pastel: linear-gradient(135deg, hsl(270 50% 90%), hsl(180 50% 78%), hsl(132 47% 90%));
+    --gradient-success: linear-gradient(135deg, hsl(132 47% 90%), hsl(132 47% 85%));
     
-    --shadow-elegant: 0 20px 60px -15px hsl(180 50% 78% / 0.3);
+    --shadow-elegant: 0 20px 60px -15px hsl(270 50% 90% / 0.4);
     --shadow-soft: 0 10px 40px -10px hsl(0 0% 0% / 0.1);
-    --shadow-glow: 0 0 60px hsl(180 50% 78% / 0.3);
+    --shadow-glow: 0 0 60px hsl(270 50% 90% / 0.5);
+    --shadow-peach: 0 8px 32px -8px hsl(25 100% 87% / 0.5);
     
     --blur-glass: blur(20px);
     --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
